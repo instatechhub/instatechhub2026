@@ -1,0 +1,428 @@
+/* ==========================================================================
+   SERVICES PAGE STYLES - LIGHT THEME
+   ========================================================================== */
+
+.services-page-root {
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   SERVICES HERO
+   ========================================================================== */
+
+.services-hero-section {
+  position: relative;
+  padding: 100px 0 60px;
+  background: radial-gradient(circle at 50% 10%, #ffffff 0%, #f1f5f9 85%);
+  border-bottom: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.services-glow-orb {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 650px;
+  height: 380px;
+  background: rgba(255, 46, 46, 0.06);
+  filter: blur(140px);
+  pointer-events: none;
+}
+
+.services-main-title {
+  font-size: 3.4rem;
+  line-height: 1.18;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: #0f172a;
+}
+
+.services-hero-sub {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+
+/* Filter Tabs */
+.services-filter-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.filter-tab-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 10px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.filter-tab-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-color: #94a3b8;
+}
+
+.filter-tab-btn.active {
+  background: var(--primary-red);
+  border-color: var(--primary-red);
+  color: #ffffff;
+  box-shadow: 0 4px 20px var(--primary-glow);
+}
+
+/* ==========================================================================
+   SERVICES DETAILED CARDS
+   ========================================================================== */
+
+.services-cards-section {
+  padding: 80px 0;
+}
+
+.services-detailed-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.service-detail-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.04);
+  padding: 38px 32px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.service-detail-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
+  border-color: rgba(255, 46, 46, 0.35);
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.service-icon-box.large {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  background: rgba(255, 46, 46, 0.08);
+  border: 1px solid rgba(255, 46, 46, 0.2);
+  color: #ff5252;
+  font-size: 1.7rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.service-badge-pill {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #e11d48;
+  background: rgba(255, 46, 46, 0.08);
+  border: 1px solid rgba(255, 46, 46, 0.25);
+  padding: 2px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.header-meta h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #0f172a;
+}
+
+.tagline-text {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 12px;
+}
+
+.service-body-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 22px;
+}
+
+.deliverables-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+}
+
+.deliverables-box h4 {
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  color: #e11d48;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.deliverables-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.deliverables-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: #334155;
+}
+
+.check-bullet-icon {
+  color: #ff4747;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.card-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.tech-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tech-tag-chip {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 3px 9px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.service-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ff5252;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: gap 0.2s ease;
+}
+
+.service-action-btn:hover {
+  gap: 12px;
+  color: #e11d48;
+}
+
+/* ==========================================================================
+   DELIVERY PROCESS TIMELINE
+   ========================================================================== */
+
+.delivery-process-section {
+  padding: 100px 0;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.process-timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.process-step-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.04);
+  padding: 34px 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.step-num-badge {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ff5252;
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+
+.process-step-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
+.process-step-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   CONSULTATION CTA SECTION
+   ========================================================================== */
+
+.services-cta-section {
+  padding: 90px 0 120px;
+}
+
+.service-appointment-card {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 50px;
+  padding: 50px;
+  background: linear-gradient(135deg, rgba(255, 46, 46, 0.06) 0%, #ffffff 100%);
+  border: 1px solid rgba(255, 46, 46, 0.25);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.06);
+}
+
+.card-left h2 {
+  font-size: 2.2rem;
+  line-height: 1.25;
+  margin-bottom: 14px;
+  color: #0f172a;
+}
+
+.card-left p {
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.card-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-quick-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.quick-btn-phone, .quick-btn-whatsapp {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  color: #0f172a;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+}
+
+.quick-btn-phone:hover {
+  background: #f8fafc;
+  border-color: rgba(255, 46, 46, 0.3);
+}
+
+.quick-btn-whatsapp {
+  border-color: rgba(37, 211, 102, 0.3);
+  color: #25d366;
+}
+
+.quick-btn-whatsapp:hover {
+  background: rgba(37, 211, 102, 0.1);
+}
+
+.quick-btn-phone small {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+
+.quick-btn-phone span {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ==========================================================================
+   SERVICES RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .services-detailed-grid {
+    grid-template-columns: 1fr;
+  }
+  .process-timeline-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .service-appointment-card {
+    grid-template-columns: 1fr;
+  }
+  .services-main-title {
+    font-size: 2.6rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .process-timeline-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-quick-box {
+    grid-template-columns: 1fr;
+  }
+  .service-appointment-card {
+    padding: 28px 20px;
+  }
+  .services-main-title {
+    font-size: 2.1rem;
+  }
+}
+
