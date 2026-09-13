@@ -774,7 +774,7 @@
 .case-metric-chip {
   position: absolute;
   top: 16px;
-  right: 16px;
+  left: 16px;
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(255, 46, 46, 0.3);
   backdrop-filter: blur(10px);
@@ -785,10 +785,75 @@
   padding: 6px 14px;
   border-radius: 999px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  z-index: 2;
+}
+
+.case-live-chip {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(15, 23, 42, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  z-index: 4;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.case-live-chip:hover {
+  background: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.35);
+}
+
+.case-live-chip.playstore {
+  background: rgba(16, 185, 129, 0.92);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.case-live-chip.playstore:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.45);
 }
 
 .case-body {
   padding: 24px;
+}
+
+.case-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.case-brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  color: #0f172a;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
 }
 
 .case-category {
@@ -797,14 +862,20 @@
   color: var(--primary-red);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 6px;
   display: block;
 }
 
 .case-body h3 {
-  font-size: 1.4rem;
-  margin-bottom: 14px;
+  font-size: 1.35rem;
+  margin-bottom: 4px;
   color: #0f172a;
+}
+
+.case-subtitle {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0 0 14px;
+  line-height: 1.45;
 }
 
 .case-tags {
@@ -820,6 +891,32 @@
   border-radius: 6px;
   font-size: 0.75rem;
   color: #64748b;
+}
+
+.case-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.case-explore-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary-red);
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.case-explore-link:hover {
+  color: #b91c1c;
+  transform: translateX(4px);
 }
 
 /* ==========================================================================

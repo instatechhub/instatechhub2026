@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="50%" stop-color="#f1f5f9" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff2e2e" />
+      <stop offset="100%" stop-color="#e11d48" />
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="800" height="480" fill="url(#bgGrad)" />
+
+  <!-- Subtle Blueprint Tech Grid Pattern -->
+  <g stroke="#cbd5e1" stroke-width="0.8" opacity="0.4">
+    <line x1="0" y1="60" x2="800" y2="60" />
+    <line x1="0" y1="120" x2="800" y2="120" />
+    <line x1="0" y1="180" x2="800" y2="180" />
+    <line x1="0" y1="240" x2="800" y2="240" />
+    <line x1="0" y1="300" x2="800" y2="300" />
+    <line x1="0" y1="360" x2="800" y2="360" />
+    <line x1="0" y1="420" x2="800" y2="420" />
+
+    <line x1="100" y1="0" x2="100" y2="480" />
+    <line x1="200" y1="0" x2="200" y2="480" />
+    <line x1="300" y1="0" x2="300" y2="480" />
+    <line x1="400" y1="0" x2="400" y2="480" />
+    <line x1="500" y1="0" x2="500" y2="480" />
+    <line x1="600" y1="0" x2="600" y2="480" />
+    <line x1="700" y1="0" x2="700" y2="480" />
+  </g>
+
+  <!-- Central Logo Frame Card -->
+  <rect x="250" y="110" width="300" height="230" rx="20" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#cardShadow)" />
+
+  <!-- Inner Badge Accent -->
+  <rect x="375" y="150" width="50" height="50" rx="14" fill="url(#brandGrad)" />
+  
+  <!-- Modern Logo Mark Icon (Layers / Tech Hub) -->
+  <path d="M400 162 L416 170 L400 178 L384 170 Z" fill="#ffffff" />
+  <path d="M384 175 L400 183 L416 175" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M384 180 L400 188 L416 180" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Typography Labels -->
+  <text x="400" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="middle" letter-spacing="0.5">BRAND LOGO</text>
+  <text x="400" y="260" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500" fill="#94a3b8" text-anchor="middle" letter-spacing="0.8">INSTA TECH HUB CLIENT</text>
+
+  <!-- Small Corner Watermark -->
+  <circle cx="280" cy="140" r="4" fill="#cbd5e1" />
+  <circle cx="295" cy="140" r="4" fill="#cbd5e1" />
+  <circle cx="310" cy="140" r="4" fill="#cbd5e1" />
+</svg>

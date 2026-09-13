@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import "./Portfolio.css";
 import { Link } from "react-router-dom";
-
-// Assets
-import project1 from "../assest/homeimage/project1.jpg";
-import project2 from "../assest/homeimage/project2.jpg";
-import project3 from "../assest/homeimage/project3.jpg";
-import project4 from "../assest/homeimage/project4.jpg";
-import project5 from "../assest/homeimage/project5.jpg";
-import project6 from "../assest/homeimage/project6.jpg";
+import { allProjects } from "../data/projectsData";
 
 // Icons
 import {
@@ -16,10 +9,11 @@ import {
   FaTimes,
   FaCheckCircle,
   FaExternalLinkAlt,
-  FaRocket,
-  FaCode,
-  FaChartLine,
-  FaLaptopCode
+  FaGlobe,
+  FaMobileAlt,
+  FaDatabase,
+  FaBuilding,
+  FaGooglePlay
 } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi2";
 
@@ -27,130 +21,14 @@ const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const portfolioProjects = [
-    {
-      id: 1,
-      title: "FinTech Cloud Banking & Analytics Dashboard",
-      category: "web",
-      categoryName: "Web Application",
-      image: project1,
-      metric: "+310% Latency Improvement",
-      overview:
-        "Engineered a high-frequency financial analytics dashboard delivering real-time transactions, currency conversions, and automated audit reporting for enterprise financial advisors.",
-      challenge:
-        "The client had an older legacy platform suffering from 4-second API latencies and data sync bottlenecks during high-volume market hours.",
-      solution:
-        "Re-architected the frontend using React and Vite with WebSocket streaming, backed by Node.js microservices and Redis caching to achieve sub-100ms updates.",
-      results: [
-        "99.99% Availability during peak trading sessions",
-        "Sub-100ms live chart render times",
-        "Automated compliance reporting saving 15 hours weekly"
-      ],
-      techStack: ["React", "Node.js", "WebSockets", "PostgreSQL", "Redis", "AWS"],
-    },
-    {
-      id: 2,
-      title: "LogiTrack Enterprise Logistics & Fleet ERP",
-      category: "desktop",
-      categoryName: "Desktop & Web Software",
-      image: project2,
-      metric: "99.98% Operational Uptime",
-      overview:
-        "Comprehensive cross-platform desktop ERP and dispatching software managing multi-fleet telemetry, barcode scanning, route optimization, and driver payroll.",
-      challenge:
-        "Remote dispatchers needed offline-capable desktop software that could sync gracefully whenever warehouse connectivity dipped.",
-      solution:
-        "Built with Electron and Python, utilizing SQLite local persistence and background workers with automated bidirectional cloud synchronization.",
-      results: [
-        "Eliminated shipment tracking discrepancies by 94%",
-        "Offline-first architecture handling 20,000+ daily package updates",
-        "Integrated hardware thermal label printers and Bluetooth scanners"
-      ],
-      techStack: ["Electron", "Python", "SQLite", "Docker", "REST API"],
-    },
-    {
-      id: 3,
-      title: "AuraCare Telemedicine & Patient Portal",
-      category: "mobile",
-      categoryName: "Mobile App (iOS/Android)",
-      image: project3,
-      metric: "50,000+ Active Patients",
-      overview:
-        "HIPAA-ready cross-platform mobile healthcare app connecting patients with licensed specialists via encrypted video consults and digital prescriptions.",
-      challenge:
-        "Providing low-bandwidth WebRTC video consultation without dropouts across heterogeneous Android and iOS devices in suburban areas.",
-      solution:
-        "Developed with Flutter for cross-platform efficiency, WebRTC adaptive video streaming, and automated SMS appointment reminders.",
-      results: [
-        "Over 50,000 active registered patients across 8 cities",
-        "4.8/5 average rating on Google Play Store & Apple App Store",
-        "Under 2-minute doctor consultation connection time"
-      ],
-      techStack: ["Flutter", "WebRTC", "Firebase", "Node.js", "GCP"],
-    },
-    {
-      id: 4,
-      title: "OmniCart High-Scale E-Commerce Ecosystem",
-      category: "web",
-      categoryName: "Web & Digital Marketing",
-      image: project4,
-      metric: "4.8x Return on Ad Spend (ROAS)",
-      overview:
-        "Modern headless Next.js e-commerce storefront with sub-second page transitions, integrated dynamic inventory, and multi-channel marketing campaigns.",
-      challenge:
-        "High cart abandonment rate caused by sluggish mobile checkouts and disorganized paid ad targeting.",
-      solution:
-        "Rebuilt store as a PWA with 1-click mobile checkouts, combined with Google Shopping Ads and dynamic retargeting funnels.",
-      results: [
-        "+185% increase in mobile checkout conversion rate",
-        "4.8x ROAS on monthly advertising spend",
-        "0.6s average mobile page speed index"
-      ],
-      techStack: ["Next.js", "Tailored CSS", "Stripe API", "Google Ads", "Meta Ads"],
-    },
-    {
-      id: 5,
-      title: "CoreFlow SaaS Project & Resource Manager",
-      category: "web",
-      categoryName: "Web Application",
-      image: project5,
-      metric: "+240% Team Productivity",
-      overview:
-        "Cloud-native project planning SaaS with interactive Gantt charts, sprint poker, automated Slack notifications, and enterprise role-based permissions.",
-      challenge:
-        "Managing complex collaborative states and real-time cursor tracking across distributed remote teams.",
-      solution:
-        "Engineered with React 19, Zustand state management, and optimized canvas rendering for complex project dependency graphs.",
-      results: [
-        "Adopted by 30+ corporate teams in first quarter",
-        "Zero UI lag when rendering 5,000+ tasks simultaneously",
-        "Seamless integration with GitHub, Jira, and Slack"
-      ],
-      techStack: ["React", "Zustand", "Node.js", "Docker", "AWS ECS"],
-    },
-    {
-      id: 6,
-      title: "PulseWave Smart Health & Fitness Companion",
-      category: "mobile",
-      categoryName: "Mobile App (iOS/Android)",
-      image: project6,
-      metric: "120k+ Workouts Logged",
-      overview:
-        "Bluetooth-connected fitness application tracking real-time vitals, heart rate zones, personalized AI meal recommendations, and community leaderboards.",
-      challenge:
-        "Maintaining background Bluetooth Low Energy (BLE) sync without draining device battery.",
-      solution:
-        "Implemented efficient native background BLE protocols in React Native with localized batching and SQLite caching.",
-      results: [
-        "60% reduction in battery consumption compared to previous build",
-        "120,000+ active workout logs recorded in 6 months",
-        "Featured on App Store 'New & Noteworthy' health category"
-      ],
-      techStack: ["React Native", "BLE API", "Node.js", "MongoDB", "Redux"],
-    },
+  const categories = [
+    { id: "all", label: "All Projects", count: allProjects.length },
+    { id: "web", label: "Web Applications", count: allProjects.filter((p) => p.category === "web").length },
+    { id: "mobile", label: "Mobile Apps", count: allProjects.filter((p) => p.category === "mobile").length },
+    { id: "crm", label: "CRM & ERP Systems", count: allProjects.filter((p) => p.category === "crm").length },
   ];
 
-  const filtered = portfolioProjects.filter((item) => {
+  const filtered = allProjects.filter((item) => {
     if (activeCategory === "all") return true;
     return item.category === activeCategory;
   });
@@ -168,27 +46,23 @@ const Portfolio = () => {
             <span>Client Portfolio</span>
           </div>
           <h1 className="portfolio-main-title">
-            Featured <span className="gradient-text-red">Engineering Work</span> & Case Studies
+            Featured <span className="gradient-text-red">Engineering Work</span> & Production Projects
           </h1>
           <p className="portfolio-hero-sub">
-            Explore how InstaTech Hub engineers scalable web systems, cross-platform mobile apps,
-            desktop software, and high-ROI digital campaigns for visionary businesses.
+            Explore live production web systems, high-growth mobile applications, and
+            enterprise CRM platforms engineered by InstaTech Hub.
           </p>
 
-          {/* Filter Pills */}
+          {/* Category Filter Row */}
           <div className="portfolio-filter-row">
-            {[
-              { id: "all", label: "All Projects" },
-              { id: "web", label: "Web Applications" },
-              { id: "mobile", label: "Mobile Apps" },
-              { id: "desktop", label: "Desktop Software" },
-            ].map((tab) => (
+            {categories.map((tab) => (
               <button
                 key={tab.id}
                 className={`p-filter-btn ${activeCategory === tab.id ? "active" : ""}`}
                 onClick={() => setActiveCategory(tab.id)}
               >
-                {tab.label}
+                <span>{tab.label}</span>
+                <span className="p-filter-count">({tab.count})</span>
               </button>
             ))}
           </div>
@@ -210,6 +84,22 @@ const Portfolio = () => {
                 <div className="p-img-box">
                   <img src={proj.image} alt={proj.title} />
                   <div className="p-metric-badge">{proj.metric}</div>
+
+                  {proj.liveUrl && (
+                    <a
+                      href={proj.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`p-live-link-chip ${proj.linkType === "playstore" ? "playstore" : ""}`}
+                      onClick={(e) => e.stopPropagation()}
+                      title={proj.linkType === "playstore" ? `Open ${proj.title} on Google Play Store` : `Visit ${proj.title} live`}
+                    >
+                      <span className="live-dot"></span>
+                      <span>{proj.linkType === "playstore" ? "Google Play" : "Visit Live"}</span>
+                      {proj.linkType === "playstore" ? <FaGooglePlay /> : <FaExternalLinkAlt />}
+                    </a>
+                  )}
+
                   <div className="p-hover-overlay">
                     <span className="view-case-tag">
                       <span>View Case Study</span>
@@ -219,8 +109,18 @@ const Portfolio = () => {
                 </div>
 
                 <div className="p-card-body">
-                  <span className="p-category-tag">{proj.categoryName}</span>
-                  <h3>{proj.title}</h3>
+                  <div className="p-card-header-meta">
+                    <span className="p-category-tag">{proj.categoryName}</span>
+                    <span className="p-card-brand-badge">
+                      <FaBuilding /> {proj.brandName}
+                    </span>
+                  </div>
+
+                  <h3 className="p-project-title">
+                    <span className="p-num-badge">#{proj.id}</span>
+                    <span>{proj.title}</span>
+                  </h3>
+                  <p className="p-subtitle">{proj.subtitle}</p>
                   <p className="p-overview-snippet">{proj.overview}</p>
 
                   <div className="p-card-footer">
@@ -243,6 +143,20 @@ const Portfolio = () => {
               </div>
             ))}
           </div>
+
+          {filtered.length === 0 && (
+            <div className="p-no-results text-center">
+              <p>No projects found for the selected filter.</p>
+              <button
+                className="btn-primary"
+                onClick={() => {
+                  setActiveCategory("all");
+                }}
+              >
+                Reset All Filters
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -257,8 +171,28 @@ const Portfolio = () => {
             </button>
 
             <div className="p-modal-header">
-              <span className="p-category-tag">{selectedProject.categoryName}</span>
+              <div className="p-modal-meta-row">
+                <span className="p-category-tag">{selectedProject.categoryName}</span>
+                <span className="p-modal-brand-tag">
+                  <FaBuilding /> Client Brand: <strong>{selectedProject.brandName}</strong>
+                </span>
+                {selectedProject.liveUrl ? (
+                  <span className="p-modal-live-indicator">
+                    <span className="live-dot"></span>
+                    {selectedProject.linkType === "playstore"
+                      ? "Available on Google Play"
+                      : "Live in Production"}
+                  </span>
+                ) : (
+                  <span className="p-modal-dev-indicator">
+                    {selectedProject.category === "mobile"
+                      ? "Upcoming on App Stores"
+                      : "Enterprise Cloud System"}
+                  </span>
+                )}
+              </div>
               <h2>{selectedProject.title}</h2>
+              <p className="p-modal-sub">{selectedProject.subtitle}</p>
               <div className="p-modal-metric">
                 <HiSparkles /> {selectedProject.metric}
               </div>
@@ -276,11 +210,11 @@ const Portfolio = () => {
 
               <div className="p-dual-grid">
                 <div className="p-section-block">
-                  <h4>The Challenge</h4>
+                  <h4>The Business Challenge</h4>
                   <p>{selectedProject.challenge}</p>
                 </div>
                 <div className="p-section-block">
-                  <h4>Engineering Solution</h4>
+                  <h4>Our Engineering Solution</h4>
                   <p>{selectedProject.solution}</p>
                 </div>
               </div>
@@ -298,7 +232,7 @@ const Portfolio = () => {
               </div>
 
               <div className="p-section-block">
-                <h4>Technologies Utilized</h4>
+                <h4>Technologies & Tools Utilized</h4>
                 <div className="p-tags-row modal-tags">
                   {selectedProject.techStack.map((tech, idx) => (
                     <span key={idx} className="p-tag-pill tech-badge">
@@ -309,6 +243,21 @@ const Portfolio = () => {
               </div>
 
               <div className="p-modal-cta">
+                {selectedProject.liveUrl && (
+                  <a
+                    href={selectedProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`btn-live-site ${selectedProject.linkType === "playstore" ? "btn-playstore" : ""}`}
+                  >
+                    {selectedProject.linkType === "playstore" ? <FaGooglePlay /> : <FaExternalLinkAlt />}
+                    <span>
+                      {selectedProject.linkType === "playstore"
+                        ? "Open in Google Play Store"
+                        : "Visit Live Website"}
+                    </span>
+                  </a>
+                )}
                 <Link
                   to="/contact"
                   className="btn-primary"
@@ -318,12 +267,14 @@ const Portfolio = () => {
                   <FaArrowRight />
                 </Link>
                 <a
-                  href="https://wa.me/919522886131"
+                  href={`https://wa.me/919522886131?text=Hi%20InstaTech%20Hub,%20I%20am%20interested%20in%20a%20project%20similar%20to%20${encodeURIComponent(
+                    selectedProject.title
+                  )}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary"
                 >
-                  <span>Chat Technical Specs</span>
+                  <span>Chat on WhatsApp</span>
                 </a>
               </div>
             </div>
@@ -332,7 +283,7 @@ const Portfolio = () => {
       )}
 
       {/* =========================================================================
-          PROMOTION & NEWSLETTER BANNER
+          PROMOTION & CTA BANNER
          ========================================================================= */}
       <section className="portfolio-cta-section">
         <div className="container">
@@ -343,8 +294,8 @@ const Portfolio = () => {
             </div>
             <h2>Have a Vision Ready for Engineering?</h2>
             <p>
-              Join ambitious leaders who trust InstaTech Hub for fast, reliable,
-              and high-converting software delivery.
+              Join ambitious businesses who trust InstaTech Hub for fast, reliable,
+              and high-converting software and digital platforms.
             </p>
             <div className="p-cta-btn-group">
               <Link to="/contact" className="btn-primary">

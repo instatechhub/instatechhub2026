@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./NavBar.css";
 import { Link, useLocation } from "react-router-dom";
 import logo from "./assest/homeimage/logo2.png";
-import { 
-  FaBars, 
-  FaTimes, 
-  FaArrowRight, 
-  FaPhoneAlt, 
+import mlogo from "./assest/homeimage/mlogo.png";
+import {
+  FaBars,
+  FaTimes,
+  FaArrowRight,
+  FaPhoneAlt,
   FaWhatsapp,
-  FaCheckCircle 
+  FaCheckCircle
 } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi2";
 import useContactStore from "./Componet/Store/contactStore/cotactStore";
@@ -90,7 +91,8 @@ const NavBar = () => {
         <div className="navbar-inner container">
           {/* Brand Logo */}
           <Link to="/" className="brand-logo" aria-label="InstaTech Hub Home">
-            <img src={logo} alt="InstaTech Hub" className="logo-img" />
+            <img src={logo} alt="InstaTech Hub" className="logo-img desktop-logo" />
+            <img src={mlogo} alt="InstaTech Hub" className="logo-img mobile-logo" />
           </Link>
 
           {/* Desktop Nav Links */}
@@ -147,7 +149,7 @@ const NavBar = () => {
         {/* Mobile Navigation Drawer */}
         <div className={`mobile-drawer ${isOpen ? "open" : ""}`}>
           <div className="mobile-drawer-header">
-            <img src={logo} alt="InstaTech Hub" className="drawer-logo" />
+            <img src={mlogo} alt="InstaTech Hub" className="drawer-logo" />
             <button className="drawer-close-btn" onClick={toggleMenu}>
               <FaTimes />
             </button>

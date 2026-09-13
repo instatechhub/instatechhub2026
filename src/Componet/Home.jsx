@@ -6,17 +6,13 @@ import useContactStore from "./Store/contactStore/cotactStore";
 
 // Assets
 import girlImage from "../assest/homeimage/girlImage.png";
-import project1 from "../assest/homeimage/project1.jpg";
-import project2 from "../assest/homeimage/project2.jpg";
-import project3 from "../assest/homeimage/project3.jpg";
-import project4 from "../assest/homeimage/project4.jpg";
-import project5 from "../assest/homeimage/project5.jpg";
 import client from "../assest/homeimage/client.png";
 import plogo2 from "../assest/homeimage/plogo2.png";
 import plogo3 from "../assest/homeimage/plogo3.png";
 import plogo4 from "../assest/homeimage/plogo4.png";
 import user1 from "../assest/homeimage/user1.png";
 import user2 from "../assest/homeimage/user2.png";
+import { allProjects } from "../data/projectsData";
 
 // Icons
 import {
@@ -28,6 +24,8 @@ import {
   FaRobot,
   FaCheckCircle,
   FaArrowRight,
+  FaExternalLinkAlt,
+  FaGooglePlay,
   FaStar,
   FaPhoneAlt,
   FaWhatsapp,
@@ -178,69 +176,36 @@ const Home = () => {
     { name: "TypeScript", icon: <FaCode /> },
   ];
 
-  // Featured Projects
-  const featuredProjects = [
-    {
-      id: 1,
-      title: "Fintech Cloud Dashboard",
-      category: "Web Application",
-      image: project1,
-      metric: "+310% Faster Latency",
-      tags: ["React", "Node.js", "AWS"],
-    },
-    {
-      id: 2,
-      title: "Logistics Enterprise ERP",
-      category: "Desktop & Web System",
-      image: project2,
-      metric: "99.98% Uptime SLA",
-      tags: ["Electron", "Python", "PostgreSQL"],
-    },
-    {
-      id: 3,
-      title: "HealthTech Telemedicine App",
-      category: "Mobile App (iOS/Android)",
-      image: project3,
-      metric: "50k+ Active Patients",
-      tags: ["Flutter", "WebRTC", "Firebase"],
-    },
-    {
-      id: 4,
-      title: "High-Volume E-Commerce Platform",
-      category: "Web & Digital Marketing",
-      image: project4,
-      metric: "4.8x Return on Ad Spend",
-      tags: ["Next.js", "SEO", "PPC Campaigns"],
-    },
-  ];
+  // Featured Real Projects
+  const featuredProjects = allProjects.filter((p) => p.featuredOnHome);
 
   // Client Testimonials
   const testimonials = [
     {
       id: 1,
-      name: "Rajesh Singhania",
-      company: "VJR Motorsports & Logistics",
+      name: "PrabhuPooja Operations",
+      company: "PrabhuPooja.com",
       rating: 5,
       review:
-        "InstaTech Hub completely revolutionized our internal operations with a custom web dashboard and high-ROI digital campaigns. Their technical team is exceptionally sharp, communicative, and delivered well before our deadline.",
+        "InstaTech Hub engineered both our web booking platform and mobile application. We have facilitated over 40,000 Vedic rituals with 100% rock-solid uptime during high-traffic festival periods like Navratri and Diwali.",
       img: user1,
     },
     {
       id: 2,
-      name: "Ananya Deshmukh",
-      company: "Aura Health Solutions",
+      name: "XleanWellness Leadership",
+      company: "XleanWellness.com",
       rating: 5,
       review:
-        "We partnered with InstaTech Hub to engineer our cross-platform mobile application. Their attention to UX, security compliance, and performance was second to none. Truly an enterprise-grade tech partner!",
+        "We partnered with InstaTech Hub to develop our D2C e-commerce platform and mobile wellness app. Their UX attention and speed optimization resulted in a 220% surge in online sales and stellar reviews.",
       img: user2,
     },
     {
       id: 3,
-      name: "Vikram Mehta",
-      company: "Apex Global Properties",
+      name: "Enterprise Solutions Head",
+      company: "InstaConnects.com",
       rating: 5,
       review:
-        "From targeted search engine dominance to high-speed web portals, InstaTech Hub generated over 300+ verified enterprise leads for us in just 60 days. Highly recommended for any serious business.",
+        "From real-time cloud telecom monitoring to our custom Lead & Sales CRM automation, InstaTech Hub delivered beyond expectations. High-velocity execution and exceptional software engineering.",
       img: user1,
     },
   ];
@@ -596,16 +561,40 @@ const Home = () => {
                 <div className="case-image-wrap">
                   <img src={proj.image} alt={proj.title} />
                   <div className="case-metric-chip">{proj.metric}</div>
+                  {proj.liveUrl && (
+                    <a
+                      href={proj.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`case-live-chip ${proj.linkType === "playstore" ? "playstore" : ""}`}
+                      onClick={(e) => e.stopPropagation()}
+                      title={proj.linkType === "playstore" ? `Open ${proj.title} on Google Play` : `Visit ${proj.title} live`}
+                    >
+                      <span className="live-dot"></span>
+                      <span>{proj.linkType === "playstore" ? "Google Play" : "Live Site"}</span>
+                      {proj.linkType === "playstore" ? <FaGooglePlay /> : <FaExternalLinkAlt />}
+                    </a>
+                  )}
                 </div>
                 <div className="case-body">
-                  <span className="case-category">{proj.category}</span>
+                  <div className="case-header-row">
+                    <span className="case-category">{proj.categoryName}</span>
+                    <span className="case-brand-badge">{proj.brandName}</span>
+                  </div>
                   <h3>{proj.title}</h3>
+                  <p className="case-subtitle">{proj.subtitle}</p>
                   <div className="case-tags">
-                    {proj.tags.map((t, i) => (
+                    {proj.techStack.slice(0, 3).map((t, i) => (
                       <span key={i} className="case-tag">
                         {t}
                       </span>
                     ))}
+                  </div>
+                  <div className="case-card-footer">
+                    <Link to="/portfolio" className="case-explore-link">
+                      <span>Explore Case Study</span>
+                      <FaArrowRight />
+                    </Link>
                   </div>
                 </div>
               </div>

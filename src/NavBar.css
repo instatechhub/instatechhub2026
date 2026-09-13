@@ -42,6 +42,14 @@
   transition: transform 0.3s ease;
 }
 
+.desktop-logo {
+  display: block;
+}
+
+.mobile-logo {
+  display: none;
+}
+
 .brand-logo:hover .logo-img {
   transform: scale(1.03);
 }
@@ -364,6 +372,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -386,6 +395,7 @@
     opacity: 0;
     transform: translateY(20px) scale(0.97);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -526,6 +536,15 @@
 @media (max-width: 960px) {
   .desktop-nav {
     display: none;
+  }
+
+  .desktop-logo {
+    display: none;
+  }
+
+  .mobile-logo {
+    display: block;
+    height: 40px;
   }
 
   .mobile-toggle-btn {
