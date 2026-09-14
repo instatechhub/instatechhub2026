@@ -83,7 +83,6 @@ const Portfolio = () => {
               >
                 <div className="p-img-box">
                   <img src={proj.image} alt={proj.title} />
-                  <div className="p-metric-badge">{proj.metric}</div>
 
                   {proj.liveUrl && (
                     <a

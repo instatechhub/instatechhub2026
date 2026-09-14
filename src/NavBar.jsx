@@ -39,12 +39,54 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile drawer on route change
   useEffect(() => {
+    const handleResize = () => {
+      const isDesktop = window.matchMedia("(min-width: 961px)").matches;
+      if (isDesktop) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleVisualViewportChange = () => {
+      setIsOpen(false);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", handleResize);
+    window.addEventListener("pageshow", handleResize);
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", handleVisualViewportChange);
+    }
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("orientationchange", handleResize);
+      window.removeEventListener("pageshow", handleResize);
+
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener("resize", handleVisualViewportChange);
+      }
+    };
+  }, []);
+
+  // Close mobile drawer on route change or whenever the app is in desktop layout
+  useEffect(() => {
+    const isDesktop = window.matchMedia("(min-width: 961px)").matches;
+    if (isDesktop) {
+      setIsOpen(false);
+      return;
+    }
+
     setIsOpen(false);
   }, [location.pathname]);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => {
+    const isDesktop = window.matchMedia("(min-width: 961px)").matches;
+    if (isDesktop) return;
+    setIsOpen((prev) => !prev);
+  };
 
   const handleQuoteSubmit = async (e) => {
     e.preventDefault();

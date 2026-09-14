@@ -341,7 +341,7 @@ const Home = () => {
         <div className="container">
           <p className="strip-label">TRUSTED BY INNOVATIVE BRANDS & ENTERPRISE TEAMS</p>
           <div className="client-logos-marquee">
-            {trustedClientLogos.map((logo, index) => (
+            {trustedClientLogos.map((logo, index) => (  
               <img key={`${logo.alt}-${index}`} src={logo.src} alt={logo.alt} />
             ))}
           </div>
@@ -566,7 +566,6 @@ const Home = () => {
               <div key={proj.id} className="case-card glass-panel">
                 <div className="case-image-wrap">
                   <img src={proj.image} alt={proj.title} />
-                  <div className="case-metric-chip">{proj.metric}</div>
                   {proj.liveUrl && (
                     <a
                       href={proj.liveUrl}
