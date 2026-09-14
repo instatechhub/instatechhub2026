@@ -1,4 +1,9 @@
 import dummyProjectImg from "../assest/homeimage/project_placeholder.svg";
+import prabhuPoojaLogo from "../assest/portfoliologo/prabhupoojalogo.png";
+import xleanWellnessLogo from "../assest/portfoliologo/xleanlogo.png";
+import instaConnectsLogo from "../assest/portfoliologo/instaconnectslogo.png";
+import atmaShuddhiLogo from "../assest/portfoliologo/atmasudhilogo.png";
+import innovativeOutsourceLogo from "../assest/portfoliologo/innovateLogo.png";
 
 export const clientBrands = [
   { id: "prabhupooja", name: "PrabhuPooja", domain: "prabhupooja.com", type: "Web & Mobile App", url: "https://prabhupooja.com" },
@@ -6,7 +11,7 @@ export const clientBrands = [
   { id: "instaconnects", name: "InstaConnects", domain: "Instaconnects.com", type: "Web Application", url: "https://instaconnects.com" },
   { id: "atmashuddhiyoga", name: "AtmaShuddhi Yoga", domain: "atmashuddhiyoga.com", type: "Web Platform", url: "https://atmashuddhiyoga.com" },
   { id: "drmanojmohanshastriji", name: "Dr. Manoj Mohan Shastriji", domain: "drmanojmohanshastriji.com", type: "Consultation Portal", url: "https://drmanojmohanshastriji.com" },
-  { id: "innovativeoutsource", name: "Innovative Outsource", domain: "Innovativeoutsouce.com", type: "Corporate Portal", url: "https://innovativeoutsouce.com" },
+  { id: "innovativeoutsource", name: "Innovative Outsource", domain: "innovateoutsource.com", type: "Corporate Portal", url: "https://www.innovateoutsource.com/" },
   { id: "hr_crm", name: "HR Recruitment & Payroll CRM", domain: "Enterprise Cloud", type: "Enterprise CRM", url: null },
   { id: "inventory_erp", name: "Inventory Management System", domain: "Warehouse Cloud", type: "Warehouse ERP", url: null },
   { id: "sales_crm", name: "Lead and Sales CRM", domain: "Sales Pipeline Cloud", type: "Sales Suite", url: null },
@@ -23,7 +28,7 @@ export const allProjects = [
     liveUrl: "https://prabhupooja.com",
     isLive: true,
     linkType: "website",
-    image: dummyProjectImg,
+    image: prabhuPoojaLogo,
     metric: "40,000+ Rituals Booked",
     overview:
       "PrabhuPooja.com is a premier digital spirituality portal enabling devotees worldwide to book authenticated Vedic pandits for sacred ceremonies, purchase consecrated pooja samagri kits, and participate in live streamed temple darshans.",
@@ -49,7 +54,7 @@ export const allProjects = [
     liveUrl: "https://play.google.com/store/apps/details?id=com.prabhupooja&hl=en_IN&pli=1",
     isLive: true,
     linkType: "playstore",
-    image: dummyProjectImg,
+    image: prabhuPoojaLogo,
     metric: "50,000+ App Downloads",
     overview:
       "A dedicated, user-friendly mobile application delivering on-demand pandit bookings, auspicious muhurat panchang notifications, daily horoscopes, and digital ritual bookings straight to devotees' smartphones.",
@@ -75,7 +80,7 @@ export const allProjects = [
     liveUrl: "https://xleanwellness.com",
     isLive: true,
     linkType: "website",
-    image: dummyProjectImg,
+    image: xleanWellnessLogo,
     metric: "+220% Direct Sales Surge",
     overview:
       "A high-converting direct-to-consumer (D2C) wellness portal delivering premium plant-based nutritional supplements, certified protein blends, and interactive fitness diet blueprints.",
@@ -101,7 +106,7 @@ export const allProjects = [
     liveUrl: "https://instaconnects.com",
     isLive: true,
     linkType: "website",
-    image: dummyProjectImg,
+    image: instaConnectsLogo,
     metric: "99.99% Enterprise Uptime",
     overview:
       "A modern corporate telecommunications and enterprise networking portal empowering companies to deploy business VoIP, virtual numbers, SMS gateways, and omnichannel customer communication channels.",
@@ -127,7 +132,7 @@ export const allProjects = [
     liveUrl: "https://atmashuddhiyoga.com",
     isLive: true,
     linkType: "website",
-    image: dummyProjectImg,
+    image: atmaShuddhiLogo,
     metric: "15,000+ Global Students",
     overview:
       "An international holistic wellness platform offering virtual yoga workshops, pranayama courses, mindfulness retreats, and certified yoga teacher training (YTT) enrollments across multiple countries.",
@@ -179,7 +184,7 @@ export const allProjects = [
     liveUrl: null,
     isLive: false,
     linkType: null,
-    image: dummyProjectImg,
+    image: instaConnectsLogo,
     metric: "75% Faster Payroll Execution",
     overview:
       "An end-to-end Human Resource Management & Payroll CRM built for modern enterprises. Features applicant tracking (ATS), automated resume scoring, biometric attendance integration, leave management, and one-click compliant payroll processing.",
@@ -205,7 +210,7 @@ export const allProjects = [
     liveUrl: null,
     isLive: false,
     linkType: null,
-    image: dummyProjectImg,
+    image: xleanWellnessLogo,
     metric: "99.8% Inventory Accuracy",
     overview:
       "A comprehensive warehouse ERP and inventory management system designed for multi-branch retailers and distributors. Features real-time stock reconciliation, barcode/QR batch scanning, low-stock reorder triggers, and supplier purchase orders.",
@@ -231,7 +236,7 @@ export const allProjects = [
     liveUrl: null,
     isLive: false,
     linkType: null,
-    image: dummyProjectImg,
+    image: instaConnectsLogo,
     metric: "+180% Deal Closure Rate",
     overview:
       "A high-velocity sales CRM designed for growth teams. Ingests leads automatically from Meta Ads, Google Ads, website forms, and WhatsApp, distributing them via round-robin logic with click-to-call, pipeline stages, and automated follow-ups.",
@@ -257,7 +262,7 @@ export const allProjects = [
     liveUrl: null,
     isLive: false,
     linkType: null,
-    image: dummyProjectImg,
+    image: xleanWellnessLogo,
     metric: "80,000+ Active Fitness Users",
     overview:
       "A feature-packed wellness mobile app delivering custom workout video routines, AI-tailored macronutrient meal plans, daily water & calorie tracking, and live messaging with certified fitness trainers. Currently in closed beta and preparing for Google Play Store release.",
@@ -280,10 +285,10 @@ export const allProjects = [
     subtitle: "Global BPO, IT Outsourcing & Remote Talent Corporate Platform",
     category: "web",
     categoryName: "Corporate Web Platform",
-    liveUrl: "https://innovativeoutsouce.com",
+    liveUrl: "https://www.innovateoutsource.com/",
     isLive: true,
     linkType: "website",
-    image: dummyProjectImg,
+    image: innovativeOutsourceLogo,
     metric: "3.5x Overseas Lead Inflow",
     overview:
       "The international corporate digital platform for Innovative Outsourcing, showcasing end-to-end BPO solutions, dedicated offshore development teams, customer support operations, and corporate case studies.",

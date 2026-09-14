@@ -6,10 +6,11 @@ import useContactStore from "./Store/contactStore/cotactStore";
 
 // Assets
 import girlImage from "../assest/homeimage/girlImage.png";
-import client from "../assest/homeimage/client.png";
-import plogo2 from "../assest/homeimage/plogo2.png";
-import plogo3 from "../assest/homeimage/plogo3.png";
-import plogo4 from "../assest/homeimage/plogo4.png";
+import prabhuPoojaLogo from "../assest/portfoliologo/prabhupoojalogo.png";
+import xleanWellnessLogo from "../assest/portfoliologo/xleanlogo.png";
+import instaConnectsLogo from "../assest/portfoliologo/instaconnectslogo.png";
+import atmaShuddhiLogo from "../assest/portfoliologo/atmasudhilogo.png";
+import innovativeOutsourceLogo from "../assest/portfoliologo/innovateLogo.png";
 import user1 from "../assest/homeimage/user1.png";
 import user2 from "../assest/homeimage/user2.png";
 import { allProjects } from "../data/projectsData";
@@ -179,6 +180,14 @@ const Home = () => {
   // Featured Real Projects
   const featuredProjects = allProjects.filter((p) => p.featuredOnHome);
 
+  const trustedClientLogos = [
+    { src: prabhuPoojaLogo, alt: "PrabhuPooja" },
+    { src: xleanWellnessLogo, alt: "XleanWellness" },
+    { src: instaConnectsLogo, alt: "InstaConnects" },
+    { src: atmaShuddhiLogo, alt: "AtmaShuddhi Yoga" },
+    { src: innovativeOutsourceLogo, alt: "Innovative Outsource" },
+  ];
+
   // Client Testimonials
   const testimonials = [
     {
@@ -328,19 +337,16 @@ const Home = () => {
       {/* =========================================================================
           CLIENT LOGOS STRIP
          ========================================================================= */}
-      {/* <section className="client-trust-strip">
+      <section className="client-trust-strip">
         <div className="container">
           <p className="strip-label">TRUSTED BY INNOVATIVE BRANDS & ENTERPRISE TEAMS</p>
           <div className="client-logos-marquee">
-            <img src={client} alt="Enterprise Client" />
-            <img src={plogo2} alt="Enterprise Client" />
-            <img src={plogo3} alt="Enterprise Client" />
-            <img src={plogo4} alt="Enterprise Client" />
-            <img src={client} alt="Enterprise Client" />
-            <img src={plogo2} alt="Enterprise Client" />
+            {trustedClientLogos.map((logo, index) => (
+              <img key={`${logo.alt}-${index}`} src={logo.src} alt={logo.alt} />
+            ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* =========================================================================
           SERVICES SECTION (Web, Mobile, Desktop, Marketing + Cloud, AI)
