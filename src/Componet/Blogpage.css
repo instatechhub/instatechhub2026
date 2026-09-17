@@ -424,3 +424,29 @@
   }
 }
 
+/* ==========================================================================
+   DEVELOPER THEME ENHANCEMENTS FOR BLOGPAGE
+   ========================================================================== */
+
+.article-terminal-box {
+  margin: 28px 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+.article-terminal-box .terminal-content pre {
+  margin: 0;
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.back-link, .b-current {
+  font-family: var(--font-code) !important;
+}
+
+.step-badge {
+  font-family: var(--font-code) !important;
+}
+

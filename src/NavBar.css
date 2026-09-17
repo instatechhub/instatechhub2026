@@ -54,6 +54,44 @@
   transform: scale(1.03);
 }
 
+.brand-dev-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 46, 46, 0.08);
+  border: 1px solid rgba(255, 46, 46, 0.25);
+  color: var(--primary-red);
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  margin-left: 8px;
+}
+
+.dev-dot-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+  animation: pulseDot 1.8s infinite;
+}
+
+.quote-cli-prompt {
+  font-family: var(--font-code);
+  color: #ffc9c9;
+  font-weight: 700;
+  margin-right: 2px;
+}
+
+@media (max-width: 768px) {
+  .brand-dev-badge {
+    display: none;
+  }
+}
+
 /* Desktop Navigation */
 .desktop-nav {
   display: flex;
@@ -192,12 +230,13 @@
   color: var(--primary-red);
 }
 
-/* Mobile Navigation Drawer */
+/* Mobile Navigation Drawer - Strict Hidden by default to prevent swipe reveal */
 .mobile-drawer {
   position: fixed;
   top: 0;
-  right: -340px;
+  right: 0;
   width: 320px;
+  max-width: 85vw;
   height: 100vh;
   background: #ffffff;
   border-left: 1px solid #e2e8f0;
@@ -205,13 +244,20 @@
   display: flex;
   flex-direction: column;
   z-index: 1100;
-  transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(105%);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
   box-shadow: -10px 0 40px rgba(0, 0, 0, 0.12);
   overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
 }
 
 .mobile-drawer.open {
-  right: 0;
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .mobile-drawer-header {
@@ -346,6 +392,8 @@
   background: rgba(15, 23, 42, 0.45);
   backdrop-filter: blur(4px);
   z-index: 1050;
+  touch-action: none;
+  overscroll-behavior: contain;
 }
 
 /* ==========================================================================
@@ -563,5 +611,14 @@
 
   .quote-btn {
     padding: 10px 14px;
+  }
+}
+
+@media (min-width: 961px) {
+  .mobile-drawer,
+  .drawer-backdrop {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
   }
 }

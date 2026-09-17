@@ -11,6 +11,7 @@ import Blog from "./Componet/Blog";
 import Contact from "./Componet/Contact";
 import Portfolio from "./Componet/Portfolio";
 import Blogpage from "./Componet/Blogpage";
+import LegalPage from "./Componet/LegalPage";
 import ScrollToTop from "./Componet/ScrollToTop";
 import ScrollAnimationObserver from "./Componet/ScrollAnimationObserver";
 
@@ -30,6 +31,9 @@ function App() {
             <Route path="/blogpage" element={<Blogpage />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/privacy-policy" element={<LegalPage pageKey="privacy-policy" />} />
+            <Route path="/terms-of-service" element={<LegalPage pageKey="terms-of-service" />} />
+            <Route path="/security" element={<LegalPage pageKey="security" />} />
           </Routes>
         </main>
         <Footer />

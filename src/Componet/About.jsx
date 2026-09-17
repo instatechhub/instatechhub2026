@@ -37,24 +37,28 @@ const About = () => {
     setActiveFaq(activeFaq === index ? null : index);
   };
 
-  // Strategic Pillars
+  // Strategic Engineering Pillars
   const pillars = [
     {
+      codeTag: "01_clean_architecture.ts",
       icon: <FaCode />,
       title: "Clean Modern Engineering",
       desc: "We write clean, modular, and heavily tested codebases using React 19, Next.js, Node, and Flutter to ensure zero technical debt.",
     },
     {
+      codeTag: "02_cloud_infrastructure.yml",
       icon: <FaShieldAlt />,
       title: "Enterprise Architecture",
-      desc: "Scalable microservices, automated CI/CD pipelines, robust database indexing, and 99.9% uptime deployment infrastructures.",
+      desc: "Scalable microservices, automated CI/CD pipelines, robust database indexing, and 99.99% uptime deployment infrastructures.",
     },
     {
+      codeTag: "03_agile_sprints.sh",
       icon: <FaRocket />,
       title: "Rapid Agile Sprints",
       desc: "Weekly sprints with transparent client demos, real-time collaboration, and predictable delivery cycles that guarantee on-time launches.",
     },
     {
+      codeTag: "04_growth_engine.py",
       icon: <FaLightbulb />,
       title: "Business Growth Driven",
       desc: "We don't just build code; we engineer software that converts visitors into customers, cuts operational costs, and drives real revenue.",
@@ -67,28 +71,28 @@ const About = () => {
       name: "Senior Solutions Architect",
       role: "Enterprise Cloud & Web Systems",
       exp: "8+ Years Engineering Experience",
-      skills: ["Cloud Architecture", "Next.js", "PostgreSQL", "System Design"],
+      skills: ["Cloud Architecture", "Next.js 15", "PostgreSQL", "System Design"],
       img: userimg,
     },
     {
       name: "Lead Full-Stack Engineer",
       role: "Distributed Systems & API Design",
       exp: "6+ Years Modern Full-Stack",
-      skills: ["React", "Node.js", "Docker", "Microservices"],
+      skills: ["React 19", "Node.js v22", "Docker", "Microservices"],
       img: userimg1,
     },
     {
       name: "Mobile & Desktop Solutions Lead",
       role: "Cross-Platform Engineering",
       exp: "5+ Years Cross-Platform Development",
-      skills: ["Flutter", "React Native", "Electron", "C#"],
+      skills: ["Flutter 3.x", "React Native", "Electron", "C#/.NET"],
       img: userimg,
     },
     {
       name: "Digital Growth & Analytics Lead",
       role: "Performance Marketing & CRO",
       exp: "6+ Years Data-Driven Growth",
-      skills: ["Technical SEO", "Google PPC", "Meta Ads", "Conversion Rate Optimization"],
+      skills: ["Technical SEO", "Google PPC", "Meta Ads", "Conversion CRO"],
       img: userimg1,
     },
   ];
@@ -96,22 +100,22 @@ const About = () => {
   // Company Milestones
   const milestones = [
     {
-      year: "Phase 01",
+      year: "git tag v1.0.0",
       title: "Agency Foundation & Core Web",
       desc: "Established high-performance engineering standards delivering scalable SaaS portals and modern web applications.",
     },
     {
-      year: "Phase 02",
+      year: "git tag v2.0.0",
       title: "Mobile & Desktop Expansion",
       desc: "Broadened delivery capabilities with cross-platform Flutter/React Native mobile applications and desktop software.",
     },
     {
-      year: "Phase 03",
+      year: "git tag v3.0.0",
       title: "DevOps & Cloud Orchestration",
-      desc: "Adopted AWS/Azure microservices, containerization with Docker, and automated CI/CD pipelines for 99.9% uptime SLAs.",
+      desc: "Adopted AWS/Azure microservices, containerization with Docker, and automated CI/CD pipelines for 99.99% uptime SLAs.",
     },
     {
-      year: "Phase 04",
+      year: "git tag v3.8.0",
       title: "Global Enterprise Scale & AI",
       desc: "Now serving 150+ client systems worldwide with custom AI automations, digital growth engines, and 24/7 technical support.",
     },
@@ -151,16 +155,16 @@ const About = () => {
       {/* =========================================================================
           HERO BANNER
          ========================================================================= */}
-      <section className="about-hero-section">
+      <section className="about-hero-section tech-grid-pattern">
         <div className="about-glow-orb"></div>
         <div className="container text-center">
           <div className="badge-pill">
             <span className="pulse-dot"></span>
-            <span>Who We Are</span>
+            <span>// Architectural Heritage</span>
           </div>
           <h1 className="about-main-title">
-            Engineering Digital Excellence, <br />
-            <span className="gradient-text-red">Empowering Business Growth.</span>
+            Engineering Type-Safe Software, <br />
+            <span className="gradient-text-red">Empowering Enterprise Scale.</span>
           </h1>
           <p className="about-hero-sub">
             InstaTech Hub is an enterprise IT agency committed to delivering robust,
@@ -169,23 +173,23 @@ const About = () => {
 
           <div className="about-stats-strip">
             <div className="about-stat-item">
-              <h3>150+</h3>
-              <p>Projects Delivered</p>
+              <h3 className="code-stat">150+</h3>
+              <p>Production Deploys</p>
             </div>
             <div className="stat-separator"></div>
             <div className="about-stat-item">
-              <h3>99.8%</h3>
-              <p>On-Time Launch Rate</p>
+              <h3 className="code-stat">99.99%</h3>
+              <p>Uptime SLA Guarantee</p>
             </div>
             <div className="stat-separator"></div>
             <div className="about-stat-item">
-              <h3>12+</h3>
+              <h3 className="code-stat">12+</h3>
               <p>Global Markets Served</p>
             </div>
             <div className="stat-separator"></div>
             <div className="about-stat-item">
-              <h3>24/7</h3>
-              <p>Dedicated Engineering Support</p>
+              <h3 className="code-stat">24/7</h3>
+              <p>SLA Engineering Support</p>
             </div>
           </div>
         </div>
@@ -266,7 +270,10 @@ const About = () => {
           <div className="pillars-grid">
             {pillars.map((pillar, idx) => (
               <div key={idx} className="pillar-card glass-panel">
-                <div className="pillar-icon-wrap">{pillar.icon}</div>
+                <div className="pillar-header-row">
+                  <div className="pillar-icon-wrap">{pillar.icon}</div>
+                  <span className="pillar-code-badge">{pillar.codeTag}</span>
+                </div>
                 <h3>{pillar.title}</h3>
                 <p>{pillar.desc}</p>
               </div>
@@ -278,12 +285,12 @@ const About = () => {
       {/* =========================================================================
           TECHNICAL LEADERSHIP
          ========================================================================= */}
-      <section className="about-team-section">
+      <section className="about-team-section tech-grid-pattern">
         <div className="container">
           <div className="section-head text-center">
             <div className="badge-pill">
               <span className="pulse-dot"></span>
-              <span>Core Tech Team</span>
+              <span>// Core Engineering Team</span>
             </div>
             <h2>Enterprise Technical Leadership</h2>
             <p>
@@ -305,7 +312,7 @@ const About = () => {
                   <div className="team-skills">
                     {member.skills.map((skill, sIdx) => (
                       <span key={sIdx} className="team-skill-tag">
-                        {skill}
+                        [ {skill} ]
                       </span>
                     ))}
                   </div>
@@ -324,7 +331,7 @@ const About = () => {
           <div className="section-head text-center">
             <div className="badge-pill">
               <span className="pulse-dot"></span>
-              <span>Our Roadmap</span>
+              <span>// Release Roadmap</span>
             </div>
             <h2>Evolution of Our Technical Capabilities</h2>
           </div>
@@ -344,12 +351,12 @@ const About = () => {
       {/* =========================================================================
           FAQ ACCORDION
          ========================================================================= */}
-      <section className="about-faq-section">
+      <section className="about-faq-section tech-grid-pattern">
         <div className="container">
           <div className="section-head text-center">
             <div className="badge-pill">
               <span className="pulse-dot"></span>
-              <span>Common Questions</span>
+              <span>// Technical FAQ</span>
             </div>
             <h2>Frequently Asked Questions</h2>
             <p>Everything you need to know about partnering with InstaTech Hub.</p>
@@ -365,7 +372,10 @@ const About = () => {
                   onClick={() => toggleFAQ(index)}
                 >
                   <div className="faq-question-bar">
-                    <h3>{faq.question}</h3>
+                    <div className="faq-q-text">
+                      <span className="cli-prompt">&gt;_</span>
+                      <h3>{faq.question}</h3>
+                    </div>
                     <div className="faq-toggle-icon">
                       {isOpen ? <FaChevronUp /> : <FaChevronDown />}
                     </div>
@@ -386,6 +396,7 @@ const About = () => {
             <p>Let's collaborate on your next digital breakthrough.</p>
             <div className="about-cta-btns">
               <Link to="/contact" className="btn-primary">
+                <span className="quote-cli-prompt">&gt;_</span>
                 <span>Schedule a Technical Call</span>
                 <FaArrowRight />
               </Link>

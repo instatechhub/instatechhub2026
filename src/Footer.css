@@ -388,3 +388,55 @@
   }
 }
 
+/* Developer Telemetry Strip */
+.footer-dev-telemetry {
+  background: #f1f5f9;
+  color: #64748b;
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  padding: 10px 0;
+  border-top: 1px solid #e2e8f0;
+}
+
+.dev-telemetry-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.telemetry-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dev-cli-sign {
+  color: var(--primary-red);
+  font-weight: 700;
+}
+
+.telemetry-ok {
+  color: #059669;
+  font-weight: 600;
+}
+
+.t-sep {
+  color: #cbd5e1;
+}
+
+.telemetry-right {
+  color: #94a3b8;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 640px) {
+  .dev-telemetry-inner {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+}
+

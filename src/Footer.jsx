@@ -231,13 +231,28 @@ const Footer = () => {
             Engineered for scalable business transformation.
           </p>
           <div className="bottom-links">
-            <Link to="/contact">Privacy Policy</Link>
+            <Link to="/privacy-policy">Privacy Policy</Link>
             <span className="dot">•</span>
-            <Link to="/contact">Terms of Service</Link>
+            <Link to="/terms-of-service">Terms of Service</Link>
             <span className="dot">•</span>
-            <Link to="/contact">Security</Link>
-            <span className="dot">•</span>
-            <Link to="/contact">Sitemap</Link>
+            <Link to="/security">Security</Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Developer Terminal Telemetry Bar */}
+      <div className="footer-dev-telemetry">
+        <div className="container dev-telemetry-inner">
+          <div className="telemetry-left">
+            <span className="dev-cli-sign">&gt;_</span>
+            <span>EOF // git:(main)</span>
+            <span className="t-sep">•</span>
+            <span className="telemetry-ok">STATUS 200 OK</span>
+            <span className="t-sep">•</span>
+            <span>PING 14ms SLA</span>
+          </div>
+          <div className="telemetry-right">
+            <span>TLS 1.3 // ZERO-TRUST // MULTI-AZ AWS</span>
           </div>
         </div>
       </div>

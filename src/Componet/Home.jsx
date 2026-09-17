@@ -35,12 +35,21 @@ import {
   FaCode,
   FaDatabase,
   FaServer,
-  FaUsersCog
+  FaUsersCog,
+  FaTerminal,
+  FaGitAlt,
+  FaCopy,
+  FaCheck
 } from "react-icons/fa";
 import { HiSparkles, HiOutlineCheckBadge } from "react-icons/hi2";
 import { BiNetworkChart, BiSupport } from "react-icons/bi";
 
 const Home = () => {
+  // Developer IDE State
+  const [activeHeroTab, setActiveHeroTab] = useState("arch");
+  const [copiedSnippet, setCopiedSnippet] = useState(false);
+  const [techFilter, setTechFilter] = useState("all");
+
   // Contact & Inquiry Form State
   const [formData, setFormData] = useState({
     name: "",
@@ -109,13 +118,100 @@ const Home = () => {
     }
   };
 
-  // Core IT Services
+  // Developer IDE Code Snippets
+  const heroSnippets = {
+    arch: `// @instatech/enterprise-architecture v3.8.0
+import { CloudCluster, Microservices } from '@instatech/cloud';
+import { React19, Next15, TypeScript } from '@instatech/frontend';
+
+export const ProductionSystem = {
+  frontend: ['Next.js 15', 'React 19', 'TypeScript 5.x'],
+  backend: ['Node.js v22', 'PostgreSQL 16', 'Redis Cache'],
+  devops: {
+    cloud: 'AWS Multi-AZ Enterprise',
+    containers: 'Docker + Kubernetes',
+    uptimeSLA: '99.99%',
+    security: 'Zero-Trust SSL/TLS 1.3'
+  },
+  deploy: async () => {
+    const cluster = await CloudCluster.provision();
+    return cluster.status; // "ONLINE // 14ms latency"
+  }
+};`,
+    deploy: `# CI/CD Automated Production Rollout
+$ git checkout -b release/v3.8-prod
+$ npm run test:coverage -- --ci
+  ✓ 192 unit tests passing (0 failures)
+  ✓ Security vulnerability scan: 0 CVEs
+$ docker build -t instatech/enterprise-cloud:latest .
+$ docker push registry.aws.amazon.com/instatech:latest
+$ kubectl rollout restart deployment/enterprise-api
+  ✓ Rolling update complete: 4/4 pods online
+  ✓ Status: 200 OK • Response Time: 16ms`,
+    telemetry: `{
+  "cluster_id": "aws-ap-south-1-prod",
+  "system_status": "HEALTHY_ONLINE",
+  "deployments_count": 150,
+  "average_api_latency": "14.2ms",
+  "uptime_sla_guarantee": "99.99%",
+  "active_microservices": 28,
+  "traffic_encryption": "TLS_1_3_AES_256",
+  "ci_cd_health": "100%_PASSING"
+}`
+  };
+
+  const handleCopyCode = () => {
+    if (navigator?.clipboard) {
+      navigator.clipboard.writeText(heroSnippets[activeHeroTab]);
+      setCopiedSnippet(true);
+      setTimeout(() => setCopiedSnippet(false), 2000);
+    }
+  };
+
+  // Software Engineering Lifecycle Pipeline
+  const engineeringPipeline = [
+    {
+      step: "01",
+      filename: "01_architecture_spec.md",
+      title: "System Architecture & RFC",
+      badge: "Discovery & Spec",
+      desc: "Comprehensive technical discovery, API contract definitions, database indexing schemas, and distributed microservice topologies.",
+      tags: ["System Design", "API Contracts", "DB Schema", "RFC Doc"]
+    },
+    {
+      step: "02",
+      filename: "02_clean_modular_code.tsx",
+      title: "Type-Safe Modular Engineering",
+      badge: "Zero Debt Dev",
+      desc: "Component-driven development using React 19, Next.js, and Node.js. Strict TypeScript linting rules and modular design patterns guarantee zero technical debt.",
+      tags: ["TypeScript 5.x", "React 19", "Clean Architecture", "Atomic UI"]
+    },
+    {
+      step: "03",
+      filename: "03_ci_cd_automated.yml",
+      title: "Automated CI/CD & Security QA",
+      badge: "Automated Pipelines",
+      desc: "Every commit undergoes automated unit testing, end-to-end regression validation, Docker containerization, and static vulnerability scanning.",
+      tags: ["GitHub Actions", "Docker Clusters", "Unit Tests", "Zero CVEs"]
+    },
+    {
+      step: "04",
+      filename: "04_cloud_telemetry.io",
+      title: "Zero-Downtime Deployment & APM",
+      badge: "99.99% Uptime",
+      desc: "Zero-downtime rolling updates on multi-AZ AWS clusters with real-time APM telemetry, automated health probes, and 24/7 SLA infrastructure support.",
+      tags: ["AWS Multi-AZ", "Real-Time APM", "Zero Downtime", "24/7 SLA"]
+    },
+  ];
+
+  // Core IT Services with Developer Signatures
   const coreServices = [
     {
       id: "web",
       icon: <FaGlobe />,
       title: "Web Development",
       badge: "Full-Stack",
+      devSignature: "const app = new FullStackApp({ ssr: true, framework: 'Next.js 15' });",
       desc: "High-performance Single Page Apps, SaaS platforms, corporate portals, and custom web architectures engineered with React, Next.js, and Node.",
       features: ["Custom SaaS Architecture", "Progressive Web Apps (PWA)", "API Integrations & SSR", "High-Security Standards"],
     },
@@ -124,6 +220,7 @@ const Home = () => {
       icon: <FaMobileAlt />,
       title: "Mobile App Development",
       badge: "iOS & Android",
+      devSignature: "mobileEngine.compile({ targets: ['iOS', 'Android'], fps: 60 });",
       desc: "Native and cross-platform mobile solutions using React Native and Flutter for butter-smooth 60fps performance and seamless offline sync.",
       features: ["Cross-Platform Flutter/React Native", "Push Notifications & Real-time Sync", "App Store & Play Store Optimization", "Biometric & Payment Gateways"],
     },
@@ -132,6 +229,7 @@ const Home = () => {
       icon: <FaDesktop />,
       title: "Desktop Software",
       badge: "Cross-Platform",
+      devSignature: "electron.build({ os: ['Windows', 'macOS', 'Linux'], csharp: true });",
       desc: "Robust Windows, macOS, and Linux desktop applications built with Electron, C#/.NET, and Python for enterprise workflow automation.",
       features: ["Electron & .NET Core Applications", "Offline-First Enterprise Systems", "Hardware & Peripheral Integration", "Background Service Automation"],
     },
@@ -140,6 +238,7 @@ const Home = () => {
       icon: <FaBullhorn />,
       title: "Digital Marketing & SEO",
       badge: "High ROI",
+      devSignature: "growthEngine.run({ seoRanking: '#1', conversionCRO: '10x' });",
       desc: "Data-driven performance marketing, high-intent Google PPC, Meta Ad campaigns, conversion rate optimization (CRO), and technical SEO.",
       features: ["Technical SEO & Keyword Dominance", "High-Converting Paid Ad Campaigns", "Social Media Brand Acceleration", "Full-Funnel Analytics Tracking"],
     },
@@ -148,6 +247,7 @@ const Home = () => {
       icon: <FaCloud />,
       title: "Cloud Infrastructure & DevOps",
       badge: "AWS & Docker",
+      devSignature: "docker compose -f docker-compose.prod.yml up -d --scale web=4",
       desc: "Modern cloud architectures, CI/CD automated deployment pipelines, Docker containerization, Kubernetes orchestration, and serverless scalability.",
       features: ["AWS & Azure Cloud Deployments", "Automated CI/CD Delivery", "Microservices & Docker Clusters", "99.9% High Availability SLAs"],
     },
@@ -156,26 +256,43 @@ const Home = () => {
       icon: <FaRobot />,
       title: "AI & Workflow Automation",
       badge: "Next-Gen",
+      devSignature: "aiAgent.orchestrate({ llm: 'Enterprise-RAG', latency: '35ms' });",
       desc: "Custom AI agent development, enterprise LLM integrations, intelligent chatbots, customer support automation, and automated document processing.",
       features: ["Custom LLM & Chatbot Solutions", "Business Workflow Automation", "Automated Lead Routing", "Predictive Analytics Models"],
     },
   ];
 
-  // Tech Stack marquee items
-  const techStack = [
-    { name: "React 19", icon: <FaCode /> },
-    { name: "Next.js", icon: <FaGlobe /> },
-    { name: "Node.js", icon: <FaServer /> },
-    { name: "Flutter", icon: <FaMobileAlt /> },
-    { name: "React Native", icon: <FaMobileAlt /> },
-    { name: "Python", icon: <FaCode /> },
-    { name: "Electron", icon: <FaDesktop /> },
-    { name: "Docker", icon: <FaCloud /> },
-    { name: "AWS Cloud", icon: <FaCloud /> },
-    { name: "PostgreSQL", icon: <FaDatabase /> },
-    { name: "MongoDB", icon: <FaDatabase /> },
-    { name: "TypeScript", icon: <FaCode /> },
+  // Categorized Tech Stack Matrix
+  const techCategories = [
+    { id: "all", label: "All Technologies" },
+    { id: "frontend", label: "Frontend & UI" },
+    { id: "backend", label: "Backend & APIs" },
+    { id: "mobile", label: "Mobile" },
+    { id: "cloud", label: "Cloud & DevOps" },
+    { id: "data", label: "Database & AI" },
   ];
+
+  const techStackData = [
+    { name: "React 19", category: "frontend", version: "v19.1", tag: "Component Architecture", icon: <FaCode /> },
+    { name: "Next.js", category: "frontend", version: "v15.2", tag: "SSR & Edge Runtime", icon: <FaGlobe /> },
+    { name: "TypeScript", category: "frontend", version: "v5.6", tag: "Strict Type Safety", icon: <FaCode /> },
+    { name: "Node.js", category: "backend", version: "v22 LTS", tag: "High-Concurrency APIs", icon: <FaServer /> },
+    { name: "Python", category: "backend", version: "v3.12", tag: "Microservices & AI", icon: <FaCode /> },
+    { name: "Flutter", category: "mobile", version: "v3.24", tag: "60fps Cross-Platform", icon: <FaMobileAlt /> },
+    { name: "React Native", category: "mobile", version: "v0.75", tag: "Native iOS & Android", icon: <FaMobileAlt /> },
+    { name: "Electron", category: "frontend", version: "v31.x", tag: "Cross-Platform Desktop", icon: <FaDesktop /> },
+    { name: "Docker", category: "cloud", version: "v27.x", tag: "Containerization", icon: <FaCloud /> },
+    { name: "AWS Cloud", category: "cloud", version: "Multi-AZ", tag: "Enterprise Scalability", icon: <FaCloud /> },
+    { name: "PostgreSQL", category: "data", version: "v16.x", tag: "ACID Relational DB", icon: <FaDatabase /> },
+    { name: "MongoDB", category: "data", version: "v7.0", tag: "NoSQL High Throughput", icon: <FaDatabase /> },
+    { name: "Redis", category: "data", version: "v7.2", tag: "In-Memory Sub-ms Cache", icon: <FaDatabase /> },
+    { name: "Kubernetes", category: "cloud", version: "v1.30", tag: "Automated Orchestration", icon: <FaCloud /> },
+  ];
+
+  const filteredTechStack = techStackData.filter((t) => {
+    if (techFilter === "all") return true;
+    return t.category === techFilter;
+  });
 
   // Featured Real Projects
   const featuredProjects = allProjects.filter((p) => p.featuredOnHome);
@@ -224,7 +341,7 @@ const Home = () => {
       {/* =========================================================================
           HERO SECTION (3D Interactive Canvas + High-Impact Promotion)
          ========================================================================= */}
-      <section className="hero-cyber-section">
+      <section className="hero-cyber-section tech-grid-pattern">
         <Interactive3DCanvas />
 
         <div className="hero-glow-orb orb-1"></div>
@@ -234,37 +351,38 @@ const Home = () => {
           <div className="hero-text-content">
             <div className="badge-pill">
               <span className="pulse-dot"></span>
-              <span>Next-Gen Enterprise IT Solutions</span>
+              <span>&lt;Enterprise_Software_Engineering /&gt;</span>
             </div>
 
             <h1 className="hero-main-title">
-              We Engineer Scalable <span className="gradient-text-red">Software</span> & Accelerate Business Growth.
+              We Code &amp; Engineer Scalable <span className="gradient-text-red">Software</span> &amp; Cloud Systems.
             </h1>
 
             <p className="hero-description">
-              InstaTech Hub is a premier IT consulting & engineering agency. We specialize in
-              <strong> Custom Web Development</strong>, <strong>Mobile Apps</strong>, <strong>Desktop Software</strong>,
-              and <strong>ROI-Driven Digital Marketing</strong> tailored to take your business to the next level.
+              InstaTech Hub is a full-cycle technology consulting &amp; software engineering agency. We architect high-throughput
+              <strong> Full-Stack Web Platforms</strong>, <strong>Cross-Platform Mobile Apps</strong>,
+              <strong> Enterprise Desktop Systems</strong>, and <strong>Automated DevOps</strong> with zero technical debt.
             </p>
 
             {/* Quick CTAs */}
             <div className="hero-cta-group">
               <Link to="/contact" className="btn-primary hero-btn-main">
+                <span className="quote-cli-prompt">&gt;_</span>
                 <span>Start Your Project</span>
                 <FaArrowRight />
               </Link>
               <Link to="/service" className="btn-secondary">
-                <span>Explore All Services</span>
+                <span>View Architecture &amp; Services</span>
               </Link>
               <a
                 href="https://wa.me/919522886131"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero-whatsapp-link"
-                title="Instant WhatsApp Connect"
+                title="Instant Technical Connect"
               >
                 <FaWhatsapp />
-                <span>Quick Chat</span>
+                <span>Technical Desk</span>
               </a>
             </div>
 
@@ -273,60 +391,168 @@ const Home = () => {
               <div className="trust-item">
                 <HiOutlineCheckBadge className="t-icon" />
                 <div>
-                  <h4>150+ Systems</h4>
-                  <p>Delivered Globally</p>
+                  <h4>150+ Deploys</h4>
+                  <p>Production Cloud Systems</p>
                 </div>
               </div>
               <div className="trust-divider"></div>
               <div className="trust-item">
                 <BiSupport className="t-icon" />
                 <div>
-                  <h4>99.8% On-Time</h4>
-                  <p>Deployment Record</p>
+                  <h4>99.99% SLA</h4>
+                  <p>Uptime &amp; Availability</p>
                 </div>
               </div>
               <div className="trust-divider"></div>
               <div className="trust-item">
                 <FaShieldAlt className="t-icon" />
                 <div>
-                  <h4>24/7 SLA</h4>
-                  <p>Enterprise Support</p>
+                  <h4>Zero Debt</h4>
+                  <p>Strict Type Safety</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Hero Visual Card / Floating 3D Showcase */}
+          {/* Hero Visual Column: Interactive Developer IDE Terminal Showcase */}
           <div className="hero-visual-col">
-            <div className="hero-glass-card">
-              <div className="card-top-header">
+            <div className="hero-ide-window">
+              {/* IDE Top Bar / Title & Controls */}
+              <div className="ide-top-bar">
                 <div className="window-dots">
                   <span className="dot red"></span>
                   <span className="dot yellow"></span>
                   <span className="dot green"></span>
                 </div>
-                <span className="system-status">● SYSTEM ACTIVE // CLOUD V3.8</span>
+                <div className="ide-tab-bar">
+                  <button
+                    type="button"
+                    className={`ide-tab ${activeHeroTab === "arch" ? "active" : ""}`}
+                    onClick={() => setActiveHeroTab("arch")}
+                  >
+                    <span className="file-icon ts">TS</span>
+                    <span>Architecture.tsx</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`ide-tab ${activeHeroTab === "deploy" ? "active" : ""}`}
+                    onClick={() => setActiveHeroTab("deploy")}
+                  >
+                    <span className="file-icon sh">SH</span>
+                    <span>deploy.sh</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`ide-tab ${activeHeroTab === "telemetry" ? "active" : ""}`}
+                    onClick={() => setActiveHeroTab("telemetry")}
+                  >
+                    <span className="file-icon json">&#123;&#125;</span>
+                    <span>telemetry.json</span>
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  className="ide-copy-btn"
+                  onClick={handleCopyCode}
+                  title="Copy Snippet"
+                >
+                  {copiedSnippet ? <FaCheck className="copy-ok" /> : <FaCopy />}
+                </button>
               </div>
 
-              <div className="hero-image-wrapper">
-                <img src={girlImage} alt="InstaTech Hub Business Solutions" className="hero-image-render" />
-              </div>
-
-              {/* Floating Metric 1 */}
-              <div className="floating-badge badge-top-right">
-                <HiSparkles className="badge-icon-sparkle" />
-                <div>
-                  <span className="badge-stat">10x ROI</span>
-                  <span className="badge-sub">Client Performance</span>
+              {/* IDE Code Editor Body */}
+              <div className="ide-editor-body">
+                <div className="ide-line-numbers">
+                  {heroSnippets[activeHeroTab].split("\n").map((_, i) => (
+                    <span key={i}>{i + 1}</span>
+                  ))}
+                </div>
+                <div className="ide-code-scroll">
+                  <pre className="ide-code-pre">
+                    <code>
+                      {activeHeroTab === "arch" && (
+                        <>
+                          <span className="syn-comment">// @instatech/enterprise-architecture v3.8.0</span>{"\n"}
+                          <span className="syn-kw">import</span> &#123; <span className="syn-fn">CloudCluster</span>, <span className="syn-fn">Microservices</span> &#125; <span className="syn-kw">from</span> <span className="syn-str">'@instatech/cloud'</span>;{"\n"}
+                          <span className="syn-kw">import</span> &#123; <span className="syn-fn">React19</span>, <span className="syn-fn">Next15</span>, <span className="syn-fn">TypeScript</span> &#125; <span className="syn-kw">from</span> <span className="syn-str">'@instatech/frontend'</span>;{"\n\n"}
+                          <span className="syn-kw">export const</span> <span className="syn-type">ProductionSystem</span> = &#123;{"\n"}
+                          {"  "}frontend: [<span className="syn-str">'Next.js 15'</span>, <span className="syn-str">'React 19'</span>, <span className="syn-str">'TypeScript 5.x'</span>],{"\n"}
+                          {"  "}backend: [<span className="syn-str">'Node.js v22'</span>, <span className="syn-str">'PostgreSQL 16'</span>, <span className="syn-str">'Redis Cache'</span>],{"\n"}
+                          {"  "}devops: &#123;{"\n"}
+                          {"    "}cloud: <span className="syn-str">'AWS Multi-AZ Enterprise'</span>,{"\n"}
+                          {"    "}containers: <span className="syn-str">'Docker + Kubernetes'</span>,{"\n"}
+                          {"    "}uptimeSLA: <span className="syn-str">'99.99%'</span>,{"\n"}
+                          {"    "}security: <span className="syn-str">'Zero-Trust SSL/TLS 1.3'</span>{"\n"}
+                          {"  "}&#125;,{"\n"}
+                          {"  "}deploy: <span className="syn-kw">async</span> () =&gt; &#123;{"\n"}
+                          {"    "}<span className="syn-kw">const</span> cluster = <span className="syn-kw">await</span> <span className="syn-fn">CloudCluster.provision</span>();{"\n"}
+                          {"    "}<span className="syn-kw">return</span> cluster.status; <span className="syn-comment">// "ONLINE // 14ms latency"</span>{"\n"}
+                          {"  "}&#125;{"\n"}
+                          &#125;;
+                        </>
+                      )}
+                      {activeHeroTab === "deploy" && (
+                        <>
+                          <span className="syn-comment"># CI/CD Automated Production Rollout</span>{"\n"}
+                          <span className="syn-kw">$</span> git checkout -b release/v3.8-prod{"\n"}
+                          <span className="syn-kw">$</span> npm run test:coverage -- --ci{"\n"}
+                          <span className="syn-str">  ✓ 192 unit tests passing (0 failures)</span>{"\n"}
+                          <span className="syn-str">  ✓ Security vulnerability scan: 0 CVEs</span>{"\n"}
+                          <span className="syn-kw">$</span> docker build -t instatech/enterprise-cloud:latest .{"\n"}
+                          <span className="syn-kw">$</span> docker push registry.aws.amazon.com/instatech:latest{"\n"}
+                          <span className="syn-kw">$</span> kubectl rollout restart deployment/enterprise-api{"\n"}
+                          <span className="syn-str">  ✓ Rolling update complete: 4/4 pods online</span>{"\n"}
+                          <span className="syn-str">  ✓ Status: 200 OK • Response Time: 16ms</span>
+                        </>
+                      )}
+                      {activeHeroTab === "telemetry" && (
+                        <>
+                          &#123;{"\n"}
+                          {"  "}<span className="syn-prop">"cluster_id"</span>: <span className="syn-str">"aws-ap-south-1-prod"</span>,{"\n"}
+                          {"  "}<span className="syn-prop">"system_status"</span>: <span className="syn-str">"HEALTHY_ONLINE"</span>,{"\n"}
+                          {"  "}<span className="syn-prop">"deployments_count"</span>: <span className="syn-num">150</span>,{"\n"}
+                          {"  "}<span className="syn-prop">"average_api_latency"</span>: <span className="syn-str">"14.2ms"</span>,{"\n"}
+                          {"  "}<span className="syn-prop">"uptime_sla_guarantee"</span>: <span className="syn-str">"99.99%"</span>,{"\n"}
+                          {"  "}<span className="syn-prop">"active_microservices"</span>: <span className="syn-num">28</span>,{"\n"}
+                          {"  "}<span className="syn-prop">"traffic_encryption"</span>: <span className="syn-str">"TLS_1_3_AES_256"</span>,{"\n"}
+                          {"  "}<span className="syn-prop">"ci_cd_health"</span>: <span className="syn-str">"100%_PASSING"</span>{"\n"}
+                          &#125;
+                        </>
+                      )}
+                    </code>
+                  </pre>
                 </div>
               </div>
 
-              {/* Floating Metric 2 */}
+              {/* IDE Status Bar */}
+              <div className="ide-status-bar">
+                <div className="status-bar-left">
+                  <span className="git-branch"><FaGitAlt /> git:(main) ✓</span>
+                  <span className="sep">•</span>
+                  <span className="status-pill-ok">0 errors</span>
+                  <span className="sep">•</span>
+                  <span>TypeScript</span>
+                </div>
+                <div className="status-bar-right">
+                  <span className="telemetry-live-dot"></span>
+                  <span>STATUS 200 OK // 14ms SLA</span>
+                </div>
+              </div>
+
+              {/* Floating Badges */}
+              <div className="floating-badge badge-top-right">
+                <HiSparkles className="badge-icon-sparkle" />
+                <div>
+                  <span className="badge-stat">10x Speed</span>
+                  <span className="badge-sub">Score: 99/100 Core Web</span>
+                </div>
+              </div>
+
               <div className="floating-badge badge-bottom-left">
                 <BiNetworkChart className="badge-icon-network" />
                 <div>
-                  <span className="badge-stat">Zero Downtime</span>
-                  <span className="badge-sub">Scalable Architecture</span>
+                  <span className="badge-stat">Zero-Downtime</span>
+                  <span className="badge-sub">Automated CI/CD Deploy</span>
                 </div>
               </div>
             </div>
@@ -339,10 +565,53 @@ const Home = () => {
          ========================================================================= */}
       <section className="client-trust-strip">
         <div className="container">
-          <p className="strip-label">TRUSTED BY INNOVATIVE BRANDS & ENTERPRISE TEAMS</p>
+          <p className="strip-label">TRUSTED BY INNOVATIVE BRANDS &amp; ENTERPRISE TEAMS</p>
           <div className="client-logos-marquee">
             {trustedClientLogos.map((logo, index) => (  
               <img key={`${logo.alt}-${index}`} src={logo.src} alt={logo.alt} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SOFTWARE ENGINEERING PIPELINE SECTION
+         ========================================================================= */}
+      <section className="engineering-pipeline-section tech-grid-pattern">
+        <div className="container">
+          <div className="section-head text-center">
+            <div className="badge-pill">
+              <span className="pulse-dot"></span>
+              <span>// Software Engineering Lifecycle</span>
+            </div>
+            <h2>How We Architect, Code &amp; Deploy Enterprise Software</h2>
+            <p>
+              Our battle-tested software engineering lifecycle ensures type-safety, zero technical debt,
+              and high-velocity automated cloud deployments.
+            </p>
+          </div>
+
+          <div className="pipeline-grid">
+            {engineeringPipeline.map((stage) => (
+              <div key={stage.step} className="pipeline-card glass-panel">
+                <div className="pipeline-card-header">
+                  <span className="pipeline-step-num">{stage.step}</span>
+                  <span className="pipeline-file-badge">{stage.filename}</span>
+                </div>
+                <div className="pipeline-card-body">
+                  <span className="pipeline-stage-tag">{stage.badge}</span>
+                  <h3>{stage.title}</h3>
+                  <p>{stage.desc}</p>
+                  <div className="pipeline-tags">
+                    {stage.tags.map((t, idx) => (
+                      <span key={idx} className="p-tag">{t}</span>
+                    ))}
+                  </div>
+                </div>
+                <div className="pipeline-card-footer">
+                  <span className="pipeline-status">● VERIFIED_STAGE</span>
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -358,7 +627,7 @@ const Home = () => {
               <span className="pulse-dot"></span>
               <span>Our Core Competencies</span>
             </div>
-            <h2>Full-Spectrum IT & Digital Growth Solutions</h2>
+            <h2>Full-Spectrum IT &amp; Digital Growth Solutions</h2>
             <p>
               From cloud web apps and cross-platform mobile experiences to specialized desktop software
               and data-backed digital marketing campaigns, we build systems that scale your business.
@@ -373,6 +642,9 @@ const Home = () => {
                   <span className="service-tag-pill">{srv.badge}</span>
                 </div>
                 <h3>{srv.title}</h3>
+                <div className="service-dev-sig">
+                  <code>{srv.devSignature}</code>
+                </div>
                 <p className="service-summary">{srv.desc}</p>
 
                 <ul className="service-feature-list">
@@ -429,16 +701,15 @@ const Home = () => {
             <div className="estimator-info">
               <div className="badge-pill">
                 <span className="pulse-dot"></span>
-                <span>Instant Estimator</span>
+                <span>// Sprint Scope Estimator</span>
               </div>
-              <h2>Calculate Your Project Estimate in 30 Seconds</h2>
+              <h2>Calculate Your Engineering Scope in 30 Seconds</h2>
               <p>
-                Plan your tech budget with confidence. Select your product type, target scale,
-                and timeline to receive a preliminary investment range.
+                Configure your architectural specifications, complexity tier, and delivery velocity to evaluate preliminary sprint investment.
               </p>
 
               <div className="estimate-result-card">
-                <span className="result-label">Estimated Investment Range</span>
+                <span className="result-label">// Estimated Sprint Investment</span>
                 <div className="result-val">{calculateEstimate()} <span className="range-sub">+ Taxes</span></div>
                 <p className="result-note">
                   *Preliminary estimate based on standard modern architecture. Contact us for detailed sprint breakdown.
@@ -522,20 +793,41 @@ const Home = () => {
       </section>
 
       {/* =========================================================================
-          TECH STACK MARQUEE
+          TECH STACK MATRIX (Categorized Developer Grid)
          ========================================================================= */}
-      <section className="tech-stack-section">
+      <section className="tech-stack-section tech-grid-pattern">
         <div className="container text-center">
           <div className="badge-pill">
             <span className="pulse-dot"></span>
-            <span>Enterprise Stack</span>
+            <span>// Production Tech Matrix</span>
           </div>
-          <h2>Cutting-Edge Technologies We Build With</h2>
-          <div className="tech-pills-row">
-            {techStack.map((tech, idx) => (
-              <div key={idx} className="tech-pill-item">
-                <span className="tech-icon">{tech.icon}</span>
-                <span className="tech-name">{tech.name}</span>
+          <h2>Cutting-Edge Technologies We Build &amp; Scale With</h2>
+          <p className="tech-matrix-sub">
+            Battle-tested frameworks, modern runtimes, cloud-native containerization, and enterprise database systems.
+          </p>
+
+          <div className="tech-filter-tabs">
+            {techCategories.map((cat) => (
+              <button
+                key={cat.id}
+                type="button"
+                className={`tech-filter-btn ${techFilter === cat.id ? "active" : ""}`}
+                onClick={() => setTechFilter(cat.id)}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="tech-cards-grid">
+            {filteredTechStack.map((tech, idx) => (
+              <div key={idx} className="tech-matrix-card glass-panel">
+                <div className="tech-card-header">
+                  <span className="tech-icon">{tech.icon}</span>
+                  <span className="tech-version-badge">{tech.version}</span>
+                </div>
+                <h3 className="tech-name">{tech.name}</h3>
+                <span className="tech-tag-label">{tech.tag}</span>
               </div>
             ))}
           </div>
@@ -611,7 +903,7 @@ const Home = () => {
       {/* =========================================================================
           CLIENT REVIEWS & SOCIAL PROOF
          ========================================================================= */}
-      <section className="reviews-section">
+      {/* <section className="reviews-section">
         <div className="container">
           <div className="section-head text-center">
             <div className="badge-pill">
@@ -642,7 +934,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* =========================================================================
           LEAD GENERATION / CONTACT INQUIRY FORM

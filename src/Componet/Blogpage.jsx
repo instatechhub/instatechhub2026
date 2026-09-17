@@ -36,7 +36,7 @@ const Blogpage = () => {
   }, []);
 
   return (
-    <div className="blogpage-root">
+    <div className="blogpage-root tech-grid-pattern">
       {/* Top Reading Progress Bar */}
       <div
         className="reading-progress-bar"
@@ -47,21 +47,21 @@ const Blogpage = () => {
         {/* Breadcrumbs & Back link */}
         <div className="blogpage-breadcrumbs">
           <Link to="/blog" className="back-link">
-            <FaArrowLeft /> Back to Insights
+            <FaArrowLeft /> ~/insights/archive
           </Link>
           <span className="b-sep">/</span>
-          <span className="b-current">Technical SEO & Architecture</span>
+          <span className="b-current">spec_google_core_update.md</span>
         </div>
 
         {/* Article Header */}
         <header className="article-header">
           <div className="badge-pill">
             <span className="pulse-dot"></span>
-            <span>Core Update Breakdown</span>
+            <span>// Architectural Whitepaper</span>
           </div>
 
           <h1 className="article-title">
-            How Google's March Core Algorithm Update Affects Enterprise Websites & Technical SEO Strategy
+            How Google's March Core Algorithm Update Affects Enterprise Websites &amp; Technical SEO Strategy
           </h1>
 
           <div className="article-meta-bar">
@@ -93,7 +93,7 @@ const Blogpage = () => {
             <div className="key-takeaways-box glass-panel">
               <div className="takeaway-header">
                 <HiSparkles className="t-sparkle" />
-                <h3>Executive Summary & Key Takeaways</h3>
+                <h3>Executive Summary &amp; Key Takeaways</h3>
               </div>
               <ul>
                 <li>
@@ -127,12 +127,27 @@ const Blogpage = () => {
               scores are experiencing substantial indexation and visibility boosts.
             </p>
 
-            <div className="article-quote-box">
-              <blockquote>
-                "Google is no longer evaluating page content in isolation; browser performance,
-                instant user responsiveness, and clean semantic DOM hierarchy are now treated as direct
-                ranking signals."
-              </blockquote>
+            <div className="terminal-card article-terminal-box">
+              <div className="terminal-header">
+                <div className="terminal-dots">
+                  <span className="t-dot red"></span>
+                  <span className="t-dot yellow"></span>
+                  <span className="t-dot green"></span>
+                </div>
+                <span className="terminal-title">lighthouse_audit_target.json</span>
+              </div>
+              <div className="terminal-content">
+                <pre>
+                  <code>
+                    <span className="syn-prop">"targets"</span>: &#123;{"\n"}
+                    {"  "}<span className="syn-prop">"LCP"</span>: <span className="syn-str">"&lt; 1.2s (Fast)"</span>,{"\n"}
+                    {"  "}<span className="syn-prop">"INP"</span>: <span className="syn-str">"&lt; 150ms (Optimal)"</span>,{"\n"}
+                    {"  "}<span className="syn-prop">"CLS"</span>: <span className="syn-str">"&lt; 0.05 (Zero Shift)"</span>,{"\n"}
+                    {"  "}<span className="syn-prop">"score"</span>: <span className="syn-num">98</span>{"\n"}
+                    &#125;
+                  </code>
+                </pre>
+              </div>
             </div>
 
             <h2>3 Critical Steps to Audit and Fortify Your Architecture</h2>

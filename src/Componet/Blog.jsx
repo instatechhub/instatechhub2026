@@ -88,28 +88,28 @@ const Blog = () => {
       {/* =========================================================================
           HERO BANNER
          ========================================================================= */}
-      <section className="blog-hero-section">
+      <section className="blog-hero-section tech-grid-pattern">
         <div className="blog-glow-orb"></div>
         <div className="container text-center">
           <div className="badge-pill">
             <span className="pulse-dot"></span>
-            <span>Knowledge Base</span>
+            <span>// Architecture RFCs &amp; Technical Insights</span>
           </div>
           <h1 className="blog-main-title">
-            Engineering & <span className="gradient-text-red">Digital Insights</span>
+            Software Engineering &amp; <span className="gradient-text-red">Digital Insights</span>
           </h1>
           <p className="blog-hero-sub">
             Practical technical blueprints, software architecture benchmarks, and digital growth
-            strategies curated by the InstaTech Hub engineering team.
+            strategies curated by the InstaTech Hub senior engineering team.
           </p>
 
           {/* Search & Category Filter */}
           <div className="blog-filter-bar">
             <div className="search-input-wrap">
-              <FaSearch className="search-icon" />
+              <span className="search-cli-prompt">&gt;_</span>
               <input
                 type="text"
-                placeholder="Search technical articles, algorithms, or frameworks..."
+                placeholder="grep -i 'architecture' technical papers..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -120,14 +120,14 @@ const Blog = () => {
                 { id: "all", label: "All Insights" },
                 { id: "seo", label: "Technical SEO" },
                 { id: "web", label: "Web Engineering" },
-                { id: "mobile", label: "Mobile Apps" },
+                { id: "mobile", label: "Mobile Architecture" },
               ].map((pill) => (
                 <button
                   key={pill.id}
                   className={`blog-tag-btn ${selectedTag === pill.id ? "active" : ""}`}
                   onClick={() => setSelectedTag(pill.id)}
                 >
-                  {pill.label}
+                  [ {pill.label} ]
                 </button>
               ))}
             </div>
@@ -146,7 +146,7 @@ const Blog = () => {
             {selectedTag === "all" && !searchQuery && (
               <div className="featured-article-card glass-panel">
                 <div className="featured-badge">
-                  <HiSparkles /> FEATURED ANALYSIS
+                  <HiSparkles /> // FEATURED TECHNICAL ANALYSIS
                 </div>
                 <div className="featured-image-box">
                   <img src={featuredArticle.image} alt={featuredArticle.title} />
@@ -162,7 +162,8 @@ const Blog = () => {
                   <h2>{featuredArticle.title}</h2>
                   <p>{featuredArticle.summary}</p>
                   <Link to={featuredArticle.slug} className="read-article-btn">
-                    <span>Read Full Article</span>
+                    <span className="btn-dev-sign">&gt;_</span>
+                    <span>Read Technical Specification</span>
                     <FaArrowRight />
                   </Link>
                 </div>
@@ -193,6 +194,7 @@ const Blog = () => {
                         <span>{art.author}</span>
                       </div>
                       <Link to={art.slug} className="card-read-link">
+                        <span className="btn-dev-sign">&gt;_</span>
                         <span>Read</span>
                         <FaArrowRight />
                       </Link>

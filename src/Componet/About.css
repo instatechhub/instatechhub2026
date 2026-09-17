@@ -518,3 +518,58 @@
   }
 }
 
+/* ==========================================================================
+   DEVELOPER THEME ENHANCEMENTS FOR ABOUT PAGE
+   ========================================================================== */
+
+.code-stat {
+  font-family: var(--font-code) !important;
+}
+
+.pillar-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.pillar-code-badge {
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+}
+
+.milestone-year {
+  font-family: var(--font-code) !important;
+  font-size: 0.8rem !important;
+  color: var(--primary-red) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.03em;
+}
+
+.team-skill-tag {
+  font-family: var(--font-code) !important;
+  font-size: 0.72rem !important;
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+.faq-q-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+
+.faq-q-text .cli-prompt {
+  font-family: var(--font-code);
+  color: var(--primary-red);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+

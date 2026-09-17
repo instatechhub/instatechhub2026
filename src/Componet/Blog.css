@@ -562,3 +562,32 @@
   }
 }
 
+/* ==========================================================================
+   DEVELOPER THEME ENHANCEMENTS FOR BLOG
+   ========================================================================== */
+
+.search-cli-prompt {
+  font-family: var(--font-code);
+  color: var(--primary-red);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.blog-tag-btn {
+  font-family: var(--font-code) !important;
+  font-size: 0.82rem !important;
+}
+
+.featured-badge {
+  font-family: var(--font-code) !important;
+  letter-spacing: 0.05em;
+}
+
+.card-meta {
+  font-family: var(--font-code) !important;
+  font-size: 0.75rem !important;
+}
+

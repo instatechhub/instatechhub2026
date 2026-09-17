@@ -38,15 +38,15 @@ const Portfolio = () => {
       {/* =========================================================================
           HERO BANNER
          ========================================================================= */}
-      <section className="portfolio-hero-section">
+      <section className="portfolio-hero-section tech-grid-pattern">
         <div className="portfolio-glow-orb"></div>
         <div className="container text-center">
           <div className="badge-pill">
             <span className="pulse-dot"></span>
-            <span>Client Portfolio</span>
+            <span>// Production Deploys &amp; Case Studies</span>
           </div>
           <h1 className="portfolio-main-title">
-            Featured <span className="gradient-text-red">Engineering Work</span> & Production Projects
+            Featured <span className="gradient-text-red">Software Systems</span> &amp; Production Deployments
           </h1>
           <p className="portfolio-hero-sub">
             Explore live production web systems, high-growth mobile applications, and
@@ -62,7 +62,7 @@ const Portfolio = () => {
                 onClick={() => setActiveCategory(tab.id)}
               >
                 <span>{tab.label}</span>
-                <span className="p-filter-count">({tab.count})</span>
+                <span className="p-filter-count">[{tab.count}]</span>
               </button>
             ))}
           </div>
@@ -94,14 +94,15 @@ const Portfolio = () => {
                       title={proj.linkType === "playstore" ? `Open ${proj.title} on Google Play Store` : `Visit ${proj.title} live`}
                     >
                       <span className="live-dot"></span>
-                      <span>{proj.linkType === "playstore" ? "Google Play" : "Visit Live"}</span>
+                      <span>{proj.linkType === "playstore" ? "Google Play" : "Live Production"}</span>
                       {proj.linkType === "playstore" ? <FaGooglePlay /> : <FaExternalLinkAlt />}
                     </a>
                   )}
 
                   <div className="p-hover-overlay">
                     <span className="view-case-tag">
-                      <span>View Case Study</span>
+                      <span className="cli-prompt">&gt;_</span>
+                      <span>View Specifications</span>
                       <FaExternalLinkAlt />
                     </span>
                   </div>
@@ -116,7 +117,7 @@ const Portfolio = () => {
                   </div>
 
                   <h3 className="p-project-title">
-                    <span className="p-num-badge">#{proj.id}</span>
+                    <span className="p-num-badge">build:#{proj.id}</span>
                     <span>{proj.title}</span>
                   </h3>
                   <p className="p-subtitle">{proj.subtitle}</p>
@@ -126,7 +127,7 @@ const Portfolio = () => {
                     <div className="p-tags-row">
                       {proj.techStack.slice(0, 3).map((t, idx) => (
                         <span key={idx} className="p-tag-pill">
-                          {t}
+                          [ {t} ]
                         </span>
                       ))}
                       {proj.techStack.length > 3 && (
@@ -134,6 +135,7 @@ const Portfolio = () => {
                       )}
                     </div>
                     <span className="p-read-more-btn">
+                      <span className="btn-dev-sign">&gt;_</span>
                       <span>Deep Dive</span>
                       <FaArrowRight />
                     </span>
@@ -165,9 +167,17 @@ const Portfolio = () => {
       {selectedProject && (
         <div className="p-modal-backdrop" onClick={() => setSelectedProject(null)}>
           <div className="p-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="p-modal-close" onClick={() => setSelectedProject(null)}>
-              <FaTimes />
-            </button>
+            <div className="modal-terminal-bar">
+              <div className="window-dots">
+                <span className="dot red"></span>
+                <span className="dot yellow"></span>
+                <span className="dot green"></span>
+              </div>
+              <span className="modal-terminal-title">spec_case_study_{selectedProject.id}.md</span>
+              <button className="p-modal-close" onClick={() => setSelectedProject(null)}>
+                <FaTimes />
+              </button>
+            </div>
 
             <div className="p-modal-header">
               <div className="p-modal-meta-row">

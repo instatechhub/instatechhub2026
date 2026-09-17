@@ -30,8 +30,9 @@ const Service = () => {
       category: "development",
       icon: <FaGlobe />,
       title: "Custom Web Development",
-      badge: "Flagship",
+      badge: "Full-Stack",
       tagline: "Scalable, High-Performance Web Applications & SaaS Systems",
+      cliSnippet: "npm i @instatech/web-core // Next.js 15, SSR & Microservices",
       desc: "We build enterprise-grade web applications using React 19, Next.js, Node.js, and modern cloud databases. From customer-facing SaaS platforms to complex corporate portals, we deliver blazing-fast load times and seamless UX.",
       deliverables: [
         "Single Page Applications (SPAs) & SSR Platforms",
@@ -49,6 +50,7 @@ const Service = () => {
       title: "Mobile App Development",
       badge: "iOS & Android",
       tagline: "Native & Cross-Platform Mobile Solutions for High Engagement",
+      cliSnippet: "flutter build appbundle --release // 60fps Butter-Smooth Sync",
       desc: "Engineered with Flutter and React Native to provide smooth 60fps animations, intuitive native experiences, and effortless cross-platform synchronization for iOS and Android.",
       deliverables: [
         "Cross-Platform Flutter & React Native Apps",
@@ -65,6 +67,7 @@ const Service = () => {
       icon: <FaDesktop />,
       title: "Desktop Software Development",
       badge: "Cross-Platform",
+      cliSnippet: "electron-builder --win --mac --linux // Offline C#/.NET Core",
       desc: "We engineer robust desktop software for Windows, macOS, and Linux using Electron, C#/.NET Core, and Python for specialized workflow automation, data processing, and hardware integrations.",
       tagline: "High-Powered Desktop Software & Enterprise Automation Systems",
       deliverables: [
@@ -83,6 +86,7 @@ const Service = () => {
       title: "Digital Marketing & SEO",
       badge: "High ROI",
       tagline: "Data-Backed Performance Marketing & Search Engine Dominance",
+      cliSnippet: "growthEngine.audit({ seo: 100, roas: '8.4x', googlePPC: true })",
       desc: "Accelerate sales, qualified leads, and brand authority with data-driven marketing campaigns. We combine targeted Google PPC, Meta Ads, Technical SEO, and CRO to maximize your advertising ROI.",
       deliverables: [
         "Technical SEO & Search Ranking Dominance",
@@ -100,6 +104,7 @@ const Service = () => {
       title: "Cloud Infrastructure & DevOps",
       badge: "Cloud-Native",
       tagline: "Automated Deployments, Scalable Clusters & 99.9% Availability",
+      cliSnippet: "terraform apply -auto-approve // AWS Multi-AZ Docker Clusters",
       desc: "Modernize your IT operations with automated CI/CD pipelines, Docker containerization, Kubernetes orchestration, and cost-optimized AWS/Azure cloud environments.",
       deliverables: [
         "AWS & Azure Cloud Architecture Setup & Optimization",
@@ -117,6 +122,7 @@ const Service = () => {
       title: "AI & Workflow Automation",
       badge: "Next-Gen",
       tagline: "Intelligent AI Agents, LLM Integrations & Automated Operations",
+      cliSnippet: "langchain.agent.run({ model: 'Enterprise-LLM', rag: true })",
       desc: "Harness the power of modern Artificial Intelligence to automate repetitive tasks, power 24/7 intelligent customer interactions, and unlock actionable insights from company data.",
       deliverables: [
         "Custom LLM & AI Chatbot Integrations",
@@ -134,6 +140,7 @@ const Service = () => {
       title: "UI/UX Product Design",
       badge: "Design Systems",
       tagline: "Intuitive, Modern Interfaces Engineered for Maximum Conversion",
+      cliSnippet: "figma.exportSystem({ tokens: 'tokens.json', components: 120 })",
       desc: "We design clean, user-centric interfaces that not only look visually stunning but are mathematically structured to maximize user retention, engagement, and conversion.",
       deliverables: [
         "Comprehensive User Journey & Wireframing",
@@ -151,6 +158,7 @@ const Service = () => {
       title: "Custom Enterprise IT Solutions",
       badge: "Turnkey",
       tagline: "End-to-End Technology Consulting & Custom Digital Transformation",
+      cliSnippet: "enterprise.modernize({ legacy: 'Migrated', downtime: 0 })",
       desc: "Tailored IT solutions built to solve complex organizational challenges. We help enterprises integrate disparate software, modernize legacy tech stacks, and scale seamlessly.",
       deliverables: [
         "Enterprise ERP & CRM Custom Integrations",
@@ -172,23 +180,27 @@ const Service = () => {
   const processSteps = [
     {
       step: "01",
-      title: "Discovery & Architecture",
-      desc: "We analyze your business objectives, map technical requirements, and define the optimal software architecture and tech stack.",
+      codeTag: "discovery_spec.rfc",
+      title: "Discovery & Architecture Spec",
+      desc: "We analyze your business objectives, map technical requirements, draft architectural RFCs, and define database schemas.",
     },
     {
       step: "02",
-      title: "UI/UX & Prototyping",
-      desc: "Our designers craft interactive, high-fidelity prototypes and design systems for client review before writing production code.",
+      codeTag: "figma_tokens.json",
+      title: "UI/UX & Design Systems",
+      desc: "Our designers craft interactive, high-fidelity prototypes and design tokens for client review before writing production code.",
     },
     {
       step: "03",
-      title: "Agile Sprint Development",
+      codeTag: "agile_sprint.tsx",
+      title: "Type-Safe Sprint Development",
       desc: "Weekly sprints with continuous automated testing, clean modular code, and milestone staging environments for real-time progress.",
     },
     {
       step: "04",
-      title: "Deployment & Scaling",
-      desc: "Zero-downtime production deployment, security hardening, search optimization, and ongoing 24/7 SLA infrastructure support.",
+      codeTag: "prod_deploy.yml",
+      title: "Zero-Downtime Deployment & SLA",
+      desc: "Zero-downtime production deployment, multi-AZ cloud setup, security hardening, and ongoing 24/7 SLA infrastructure support.",
     },
   ];
 
@@ -197,19 +209,19 @@ const Service = () => {
       {/* =========================================================================
           SERVICES HERO
          ========================================================================= */}
-      <section className="services-hero-section">
+      <section className="services-hero-section tech-grid-pattern">
         <div className="services-glow-orb"></div>
         <div className="container text-center">
           <div className="badge-pill">
             <span className="pulse-dot"></span>
-            <span>Enterprise Services</span>
+            <span>// Architectural Capabilities</span>
           </div>
           <h1 className="services-main-title">
-            Comprehensive <span className="gradient-text-red">IT Engineering</span> & Digital Solutions
+            Enterprise <span className="gradient-text-red">Software Engineering</span> &amp; Cloud Solutions
           </h1>
           <p className="services-hero-sub">
-            From modern web applications and mobile apps to desktop software and high-impact digital marketing,
-            we deliver scalable technology tailored to your business goals.
+            From modern full-stack web platforms and cross-platform mobile apps to specialized desktop software
+            and automated DevOps pipelines, we engineer software designed to scale without technical debt.
           </p>
 
           {/* Filter Pills */}
@@ -248,6 +260,11 @@ const Service = () => {
                   </div>
                 </div>
 
+                <div className="service-cli-snippet">
+                  <span className="cli-prompt">&gt;_</span>
+                  <code>{service.cliSnippet}</code>
+                </div>
+
                 <p className="tagline-text">{service.tagline}</p>
                 <p className="service-body-desc">{service.desc}</p>
 
@@ -267,13 +284,14 @@ const Service = () => {
                   <div className="tech-tags-list">
                     {service.techStack.map((tech, tIdx) => (
                       <span key={tIdx} className="tech-tag-chip">
-                        {tech}
+                        [ {tech} ]
                       </span>
                     ))}
                   </div>
 
                   <Link to="/contact" className="service-action-btn">
-                    <span>Inquire Service</span>
+                    <span className="btn-dev-sign">&gt;_</span>
+                    <span>Inquire Specifications</span>
                     <FaArrowRight />
                   </Link>
                 </div>
@@ -286,12 +304,12 @@ const Service = () => {
       {/* =========================================================================
           4-STEP AGILE DELIVERY PROCESS
          ========================================================================= */}
-      <section className="delivery-process-section">
+      <section className="delivery-process-section tech-grid-pattern">
         <div className="container">
           <div className="section-head text-center">
             <div className="badge-pill">
               <span className="pulse-dot"></span>
-              <span>Our Methodology</span>
+              <span>// Agile SDLC Protocol</span>
             </div>
             <h2>The 4-Step Agile Delivery Lifecycle</h2>
             <p>A proven engineering framework that turns your concept into market-ready software.</p>
@@ -300,9 +318,16 @@ const Service = () => {
           <div className="process-timeline-grid">
             {processSteps.map((step, idx) => (
               <div key={idx} className="process-step-card glass-panel">
-                <div className="step-num-badge">{step.step}</div>
+                <div className="process-card-top">
+                  <div className="step-num-badge">{step.step}</div>
+                  <span className="step-code-file">{step.codeTag}</span>
+                </div>
                 <h3>{step.title}</h3>
                 <p>{step.desc}</p>
+                <div className="step-card-status">
+                  <span className="step-dot-ok"></span>
+                  <span>PHASE_VERIFIED</span>
+                </div>
               </div>
             ))}
           </div>

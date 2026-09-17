@@ -135,6 +135,10 @@ const NavBar = () => {
           <Link to="/" className="brand-logo" aria-label="InstaTech Hub Home">
             <img src={logo} alt="InstaTech Hub" className="logo-img desktop-logo" />
             <img src={mlogo} alt="InstaTech Hub" className="logo-img mobile-logo" />
+            <span className="brand-dev-badge">
+              <span className="dev-dot-pulse"></span>
+              <span>v2.4_PROD</span>
+            </span>
           </Link>
 
           {/* Desktop Nav Links */}
@@ -173,6 +177,7 @@ const NavBar = () => {
               className="quote-btn"
               onClick={() => setShowQuoteModal(true)}
             >
+              <span className="quote-cli-prompt">&gt;_</span>
               <span>Get a Quote</span>
               <FaArrowRight className="arrow-icon" />
             </button>
