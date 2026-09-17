@@ -12,7 +12,6 @@ import plogo4 from "../assest/homeimage/plogo4.png";
 import userimg from "../assest/homeimage/user1.png";
 import userimg1 from "../assest/homeimage/user2.png";
 
-// Icons
 import {
   FaRocket,
   FaShieldAlt,
