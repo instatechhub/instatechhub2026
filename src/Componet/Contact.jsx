@@ -170,7 +170,7 @@ const Contact = () => {
               <h3>Electronic Mail</h3>
               <p>
                 info@instatechhub.com <br />
-                enquiry@instatechhub.com
+                info@instatechhub.com
               </p>
               <a href="mailto:info@instatechhub.com" className="c-action-link">
                 <span>&gt;_ Dispatch Mail</span>
