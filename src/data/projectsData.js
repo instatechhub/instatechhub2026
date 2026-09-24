@@ -4,6 +4,7 @@ import xleanWellnessLogo from "../assest/portfoliologo/xleanlogo.png";
 import instaConnectsLogo from "../assest/portfoliologo/instaconnectslogo.png";
 import atmaShuddhiLogo from "../assest/portfoliologo/atmasudhilogo.png";
 import innovativeOutsourceLogo from "../assest/portfoliologo/innovateLogo.png";
+import maaBaglamukhiLogo from "../assest/portfoliologo/0111.png";
 
 export const clientBrands = [
   { id: "prabhupooja", name: "PrabhuPooja", domain: "prabhupooja.com", type: "Web & Mobile App", url: "https://prabhupooja.com" },
@@ -12,6 +13,7 @@ export const clientBrands = [
   { id: "atmashuddhiyoga", name: "AtmaShuddhi Yoga", domain: "atmashuddhiyoga.com", type: "Web Platform", url: "https://atmashuddhiyoga.com" },
   { id: "drmanojmohanshastriji", name: "Dr. Manoj Mohan Shastriji", domain: "drmanojmohanshastriji.com", type: "Consultation Portal", url: "https://drmanojmohanshastriji.com" },
   { id: "innovativeoutsource", name: "Innovative Outsource", domain: "innovateoutsource.com", type: "Corporate Portal", url: "https://www.innovateoutsource.com/" },
+  { id: "maabaglamukhi", name: "Maa Baglamukhi Mahashakti Dham", domain: "maabaglamukhimahashaktidham.in", type: "Spiritual Services Portal", url: "https://www.maabaglamukhimahashaktidham.in/" },
   { id: "hr_crm", name: "HR Recruitment & Payroll CRM", domain: "Enterprise Cloud", type: "Enterprise CRM", url: null },
   { id: "inventory_erp", name: "Inventory Management System", domain: "Warehouse Cloud", type: "Warehouse ERP", url: null },
   { id: "sales_crm", name: "Lead and Sales CRM", domain: "Sales Pipeline Cloud", type: "Sales Suite", url: null },
@@ -303,5 +305,31 @@ export const allProjects = [
     ],
     techStack: ["React", "Next.js", "Node.js", "HubSpot CRM", "Tailored CSS", "Cloudflare"],
     featuredOnHome: false,
+  },
+  {
+    id: 12,
+    brandName: "Maa Baglamukhi Mahashakti Dham",
+    title: "maabaglamukhimahashaktidham.in",
+    subtitle: "Vedic Anushthan, Sankalp Booking & Spiritual Consultation Portal",
+    category: "web",
+    categoryName: "Spiritual Services & Booking Portal",
+    liveUrl: "https://www.maabaglamukhimahashaktidham.in/",
+    isLive: true,
+    linkType: "website",
+    image: maaBaglamukhiLogo,
+    metric: "5,000+ Successful Anushthans",
+    overview:
+      "A devotional digital experience for Maa Baglamukhi Mahashakti Dham, helping devotees understand authentic Vedic anushthan services, request a personalized sankalp by name and gotra, and connect with experienced acharyas for guidance.",
+    challenge:
+      "Building trust for a deeply personal spiritual service while keeping the journey simple for devotees across devices, with clear service discovery, direct consultation access, and a low-friction sankalp request flow.",
+    solution:
+      "Created a Hindi-first spiritual services portal with a focused landing page, service-led navigation, prominent sankalp CTAs, direct WhatsApp consultation, live havan proof points, and devotional engagement moments such as the diya lighting interaction.",
+    results: [
+      "Centralized anushthan discovery, personalized sankalp requests, and acharya consultation in one journey",
+      "Made the name/gotra-based sankalp intent clear before devotees begin the booking flow",
+      "Improved confidence with authentic Vedic positioning, ritual outcomes, and live ceremony proof points"
+    ],
+    techStack: ["React", "Responsive UI", "WhatsApp API", "Booking Flow", "Hindi UX", "Tailored CSS"],
+    featuredOnHome: true,
   },
 ];
