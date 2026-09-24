@@ -12,7 +12,7 @@ import {
   FaCheckCircle
 } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi2";
-import useContactStore from "./Componet/Store/contactStore/cotactStore";
+import { openEnquiryOnWhatsApp } from "./utils/whatsapp";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +29,7 @@ const NavBar = () => {
     message: "",
   });
   const [isSuccess, setIsSuccess] = useState(false);
-  const { addEnquiry, isLoading } = useContactStore();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,34 +88,26 @@ const NavBar = () => {
     setIsOpen((prev) => !prev);
   };
 
-  const handleQuoteSubmit = async (e) => {
+  const handleQuoteSubmit = (e) => {
     e.preventDefault();
-    try {
-      const res = await addEnquiry({
-        name: formData.name,
-        email: formData.email,
-        number: formData.number,
-        platform: "instatechhub",
-        subject: `Quick Quote Request: ${formData.service}`,
-        message: formData.message || `Client requested quick estimate for ${formData.service}`,
-      });
-      if (res?.data?.success || res?.status === 200) {
-        setIsSuccess(true);
-        setTimeout(() => {
-          setIsSuccess(false);
-          setShowQuoteModal(false);
-          setFormData({ name: "", email: "", number: "", service: "Web Development", message: "" });
-        }, 2200);
-      }
-    } catch (err) {
-      console.error(err);
-      // fallback success feedback if backend has cors/offline during demo
-      setIsSuccess(true);
-      setTimeout(() => {
-        setIsSuccess(false);
-        setShowQuoteModal(false);
-      }, 2200);
-    }
+    setIsSubmitting(true);
+    const enquiry = {
+      name: formData.name,
+      email: formData.email,
+      number: formData.number,
+      subject: `Quick Quote Request: ${formData.service}`,
+      message: formData.message || `Client requested quick estimate for ${formData.service}`,
+      service: formData.service,
+    };
+
+    openEnquiryOnWhatsApp(enquiry);
+    setIsSuccess(true);
+    setTimeout(() => {
+      setIsSuccess(false);
+      setIsSubmitting(false);
+      setShowQuoteModal(false);
+      setFormData({ name: "", email: "", number: "", service: "Web Development", message: "" });
+    }, 2200);
   };
 
   const navLinks = [
@@ -363,9 +355,9 @@ const NavBar = () => {
                   <button
                     type="submit"
                     className="modal-submit-btn"
-                    disabled={isLoading}
+                    disabled={isSubmitting}
                   >
-                    {isLoading ? "Submitting Inquiry..." : "Submit Quote Request"}
+                    {isSubmitting ? "Opening WhatsApp..." : "Submit Quote Request"}
                     <FaArrowRight />
                   </button>
                 </form>

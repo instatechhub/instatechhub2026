@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import Interactive3DCanvas from "./Interactive3DCanvas";
-import useContactStore from "./Store/contactStore/cotactStore";
+import { openEnquiryOnWhatsApp } from "../utils/whatsapp";
 
 // Assets
 import girlImage from "../assest/homeimage/girlImage.png";
@@ -60,7 +60,7 @@ const Home = () => {
     message: "",
   });
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const { addEnquiry, isLoading } = useContactStore();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Project Cost Estimator State
   const [calcService, setCalcService] = useState("web");
@@ -86,36 +86,32 @@ const Home = () => {
     return `₹${total.toLocaleString("en-IN")}`;
   };
 
-  const handleFormSubmit = async (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await addEnquiry({
-        name: formData.name,
-        email: formData.email,
-        number: formData.number,
-        platform: "instatechhub",
-        subject: `${formData.subject} - ${formData.service}`,
-        message: formData.message || `Client requested inquiry for ${formData.service}`,
-      });
+    setIsSubmitting(true);
+    const enquiry = {
+      name: formData.name,
+      email: formData.email,
+      number: formData.number,
+      subject: `${formData.subject} - ${formData.service}`,
+      message: formData.message || `Client requested inquiry for ${formData.service}`,
+      service: formData.service,
+    };
 
-      if (response?.data?.success || response?.status === 200) {
-        setSubmitSuccess(true);
-        setFormData({
-          name: "",
-          email: "",
-          number: "",
-          service: "Web Development",
-          subject: "New Project Inquiry",
-          message: "",
-        });
-        setTimeout(() => setSubmitSuccess(false), 5000);
-      }
-    } catch (error) {
-      console.error(error);
-      // Fallback presentation feedback
-      setSubmitSuccess(true);
-      setTimeout(() => setSubmitSuccess(false), 5000);
-    }
+    openEnquiryOnWhatsApp(enquiry);
+    setSubmitSuccess(true);
+    setFormData({
+      name: "",
+      email: "",
+      number: "",
+      service: "Web Development",
+      subject: "New Project Inquiry",
+      message: "",
+    });
+    setTimeout(() => {
+      setSubmitSuccess(false);
+      setIsSubmitting(false);
+    }, 5000);
   };
 
   // Developer IDE Code Snippets
@@ -1047,8 +1043,8 @@ $ kubectl rollout restart deployment/enterprise-api
                     ></textarea>
                   </div>
 
-                  <button type="submit" className="btn-primary w-full submit-lead-btn" disabled={isLoading}>
-                    {isLoading ? "Submitting Inquiry..." : "Submit Project Inquiry"}
+                  <button type="submit" className="btn-primary w-full submit-lead-btn" disabled={isSubmitting}>
+                    {isSubmitting ? "Opening WhatsApp..." : "Submit Project Inquiry"}
                     <FaArrowRight />
                   </button>
                 </form>

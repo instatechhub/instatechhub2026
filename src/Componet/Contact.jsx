@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Contact.css";
-import useContactStore from "./Store/contactStore/cotactStore";
+import { openEnquiryOnWhatsApp } from "../utils/whatsapp";
 
 // Assets
 import girlImage from "../assest/homeimage/girlImage.png";
@@ -30,39 +30,36 @@ const Contact = () => {
     message: "",
   });
   const [isSuccess, setIsSuccess] = useState(false);
-  const { addEnquiry, isLoading } = useContactStore();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await addEnquiry({
-        name: formData.name,
-        email: formData.email,
-        number: formData.number,
-        platform: "instatechhub",
-        subject: `${formData.subject}: ${formData.service} (Budget: ${formData.budget})`,
-        message: formData.message || `Client inquired about ${formData.service} with budget ${formData.budget}`,
-      });
+    setIsSubmitting(true);
+    const enquiry = {
+      name: formData.name,
+      email: formData.email,
+      number: formData.number,
+      subject: `${formData.subject}: ${formData.service} (Budget: ${formData.budget})`,
+      message: formData.message || `Client inquired about ${formData.service} with budget ${formData.budget}`,
+      service: formData.service,
+      budget: formData.budget,
+    };
 
-      if (response?.data?.success || response?.status === 200) {
-        setIsSuccess(true);
-        setFormData({
-          name: "",
-          email: "",
-          number: "",
-          service: "Web Development",
-          budget: "₹50k - ₹1.5L",
-          subject: "Project Consultation Request",
-          message: "",
-        });
-        setTimeout(() => setIsSuccess(false), 5000);
-      }
-    } catch (error) {
-      console.error(error);
-      // Fallback UI presentation if demo server is offline
-      setIsSuccess(true);
-      setTimeout(() => setIsSuccess(false), 5000);
-    }
+    openEnquiryOnWhatsApp(enquiry);
+    setIsSuccess(true);
+    setFormData({
+      name: "",
+      email: "",
+      number: "",
+      service: "Web Development",
+      budget: "₹50k - ₹1.5L",
+      subject: "Project Consultation Request",
+      message: "",
+    });
+    setTimeout(() => {
+      setIsSuccess(false);
+      setIsSubmitting(false);
+    }, 5000);
   };
 
   return (
@@ -389,9 +386,9 @@ const Contact = () => {
                   <button
                     type="submit"
                     className="btn-primary w-full submit-contact-btn"
-                    disabled={isLoading}
+                    disabled={isSubmitting}
                   >
-                    {isLoading ? "Dispatching Payload..." : ">_ Dispatch Project RFC"}
+                    {isSubmitting ? "Opening WhatsApp..." : ">_ Dispatch Project RFC"}
                     <FaArrowRight />
                   </button>
                 </form>
